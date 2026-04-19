@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta id="meta-desc" name="description" content="Dr. Kapoor Dental Clinic – Advanced dental care in Amritsar. Painless treatments, teeth whitening, braces, implants. Book: +91 98145 67890">
+<meta id="meta-kw" name="keywords" content="dentist amritsar, dental clinic amritsar, teeth whitening amritsar">
+<title id="page-title">Dr. Kapoor Dental Clinic | Best Dentist in Amritsar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="gfonts" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 — SHARED CSS VARIABLES (theme-able)
+═══════════════════════════════════════════════ -->
+<style id="theme-css">
+:root{
+  --sage:#4a7c6f;--sage-l:#6b9e8f;--sage-d:#2d5248;
+  --gold:#c9a84c;--gold-l:#e8cc82;
+  --ivory:#faf8f4;--cream:#f2ede4;
+  --ink:#1a1a1a;--mid:#5c5c5c;--hint:#9a9a9a;
+  --white:#fff;
+  --fd:'Cormorant Garamond',serif;
+  --fb:'DM Sans',sans-serif;
+}
+</style>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 — WEBSITE STYLES
+═══════════════════════════════════════════════ -->
+<style id="site-css">
+#site-root *{margin:0;padding:0;box-sizing:border-box}
+#site-root{font-family:var(--fb);background:var(--ivory);color:var(--ink);overflow-x:hidden}
+/* NAV */
+#site-root nav{position:fixed;top:0;width:100%;z-index:100;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(250,248,244,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(74,124,111,.1);transition:box-shadow .3s}
+#site-root .nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+#site-root .nlogo-icon{width:36px;height:36px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+#site-root .nlogo-icon img{width:100%;height:100%;object-fit:contain;display:none}
+#site-root .nlogo-icon .nfb{font-size:18px;color:#fff}
+#site-root .nname{font-family:var(--fd);font-size:18px;font-weight:600;color:var(--sage-d);line-height:1.15}
+#site-root .ntag{font-size:11px;font-weight:400;color:var(--mid);font-family:var(--fb);letter-spacing:.06em;text-transform:uppercase}
+#site-root .nlinks{display:flex;align-items:center;gap:28px;list-style:none}
+#site-root .nlinks a{font-size:13px;color:var(--mid);text-decoration:none;transition:color .2s}
+#site-root .nlinks a:hover{color:var(--sage)}
+#site-root .ncta{padding:9px 20px;background:var(--sage);color:#fff;border-radius:40px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s}
+#site-root .ncta:hover{background:var(--sage-d);transform:translateY(-1px)}
+/* HERO */
+#site-root .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:110px 5% 70px;gap:50px;position:relative;overflow:hidden}
+#site-root .hero::before{content:'';position:absolute;right:-180px;top:-80px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,111,.07) 0%,transparent 70%);pointer-events:none}
+#site-root .htag{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(74,124,111,.1);border-radius:40px;font-size:12px;font-weight:500;color:var(--sage);letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+#site-root .htag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage);display:block}
+#site-root .hero h1{font-family:var(--fd);font-size:clamp(40px,5vw,70px);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:22px}
+#site-root .hero h1 em{color:var(--sage);font-style:normal;position:relative}
+#site-root .hero h1 em::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2px;background:var(--gold)}
+#site-root .hsub{font-size:16px;font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:32px;max-width:430px}
+#site-root .hbtns{display:flex;gap:12px;flex-wrap:wrap}
+#site-root .btn-p{padding:13px 26px;background:var(--sage);color:#fff;border-radius:40px;font-size:14px;font-weight:500;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+#site-root .btn-p:hover{background:var(--sage-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(74,124,111,.3)}
+#site-root .btn-s{padding:13px 26px;background:transparent;color:var(--sage);border:1px solid var(--sage);border-radius:40px;font-size:14px;font-weight:500;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+#site-root .btn-s:hover{background:var(--sage);color:#fff}
+#site-root .hstats{display:flex;gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid rgba(74,124,111,.15)}
+#site-root .hstat .snum{font-family:var(--fd);font-size:34px;font-weight:700;color:var(--sage-d)}
+#site-root .hstat .slbl{font-size:11px;color:var(--hint);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+#site-root .hvisual{position:relative;display:flex;justify-content:center;align-items:center}
+#site-root .himg{width:100%;max-width:480px;aspect-ratio:4/5;border-radius:40px 8px 40px 8px;overflow:hidden;background:linear-gradient(135deg,#e8f4f1,#d4ebe4)}
+#site-root .himg img{width:100%;height:100%;object-fit:cover;display:block}
+#site-root .hph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+#site-root .hph .phi{font-size:72px;opacity:.35}
+#site-root .hph p{font-family:var(--fd);font-size:17px;color:var(--sage);opacity:.55;text-align:center}
+#site-root .fc{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 6px 28px rgba(0,0,0,.1);display:flex;align-items:center;gap:9px}
+#site-root .fc1{bottom:36px;left:-24px;animation:fc-float 3s ease-in-out infinite}
+#site-root .fc2{top:54px;right:-16px;animation:fc-float 3s ease-in-out infinite 1.5s}
+@keyframes fc-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+#site-root .fci{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px}
+#site-root .fcv{font-size:14px;font-weight:600;color:var(--ink);font-family:var(--fd)}
+#site-root .fcl{font-size:10px;color:var(--hint)}
+/* TRUST */
+#site-root .trust{padding:24px 5%;background:var(--sage-d);display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap}
+#site-root .titem{display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.8);font-size:14px;font-family:var(--fb)}
+/* SECTION */
+#site-root .sec{padding:80px 5%}
+#site-root .sch{text-align:center;margin-bottom:52px}
+#site-root .stag{display:inline-block;font-size:12px;font-weight:500;color:var(--sage);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+#site-root .stitle{font-family:var(--fd);font-size:clamp(30px,4vw,50px);font-weight:700;color:var(--ink);line-height:1.2}
+#site-root .ssub{font-size:16px;color:var(--mid);margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+/* SERVICES */
+#site-root .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+#site-root .scard{background:#fff;border-radius:18px;padding:28px 24px;border:1px solid rgba(74,124,111,.1);transition:all .3s;position:relative;overflow:hidden;cursor:default}
+#site-root .scard::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--sage),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+#site-root .scard:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(74,124,111,.12)}
+#site-root .scard:hover::before{transform:scaleX(1)}
+#site-root .sico{width:48px;height:48px;border-radius:12px;background:rgba(74,124,111,.1);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:24px}
+#site-root .scard h3{font-family:var(--fd);font-size:21px;font-weight:600;margin-bottom:8px}
+#site-root .scard p{font-size:14px;color:var(--mid);line-height:1.7}
+#site-root .ptag{display:inline-block;margin-top:14px;padding:3px 10px;background:rgba(201,168,76,.12);border-radius:40px;font-size:12px;font-weight:500;color:var(--gold)}
+/* WHY */
+#site-root .why{background:var(--cream);padding:80px 5%}
+#site-root .why-in{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+#site-root .why-img{background:linear-gradient(135deg,rgba(74,124,111,.14),rgba(74,124,111,.05));border-radius:22px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:110px;overflow:hidden}
+#site-root .why-img img{width:100%;height:100%;object-fit:cover}
+#site-root .wlist{margin-top:28px;display:flex;flex-direction:column;gap:18px}
+#site-root .wi{display:flex;gap:14px;align-items:flex-start}
+#site-root .wnum{width:30px;height:30px;border-radius:7px;background:var(--sage);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fd)}
+#site-root .wi h4{font-size:15px;font-weight:500;margin-bottom:3px}
+#site-root .wi p{font-size:14px;color:var(--mid);line-height:1.6}
+/* GALLERY */
+#site-root .gal{padding:80px 5%}
+#site-root .ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+#site-root .gitem{border-radius:14px;overflow:hidden;aspect-ratio:1;background:var(--cream)}
+#site-root .gitem img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+#site-root .gitem:hover img{transform:scale(1.04)}
+/* REVIEWS */
+#site-root .revs{padding:80px 5%}
+#site-root .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+#site-root .rcard{background:#fff;border-radius:18px;padding:24px;border:1px solid rgba(74,124,111,.1)}
+#site-root .stars{font-size:15px;margin-bottom:12px;letter-spacing:2px;color:var(--gold)}
+#site-root .rtext{font-family:var(--fd);font-size:17px;line-height:1.65;margin-bottom:18px;font-style:italic}
+#site-root .rev{display:flex;align-items:center;gap:10px}
+#site-root .rav{width:38px;height:38px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;font-family:var(--fd);flex-shrink:0}
+#site-root .rname{font-size:14px;font-weight:500}
+#site-root .rloc{font-size:12px;color:var(--hint)}
+/* CONTACT */
+#site-root .contact{background:var(--sage-d);padding:80px 5%;color:#fff}
+#site-root .cin{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+#site-root .cinfo h2{font-family:var(--fd);font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.2;margin-bottom:18px}
+#site-root .cinfo p{font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:30px}
+#site-root .cdets{display:flex;flex-direction:column;gap:14px;margin-bottom:30px}
+#site-root .cdet{display:flex;align-items:center;gap:12px}
+#site-root .cdet-ico{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+#site-root .cdet span{font-size:14px;color:rgba(255,255,255,.85)}
+#site-root .wa-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;background:#25D366;border-radius:40px;color:#fff;font-size:14px;font-weight:500;text-decoration:none;transition:all .25s}
+#site-root .wa-btn:hover{background:#1da851;transform:translateY(-2px)}
+#site-root .cform{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:32px}
+#site-root .cform h3{font-family:var(--fd);font-size:24px;font-weight:600;margin-bottom:22px}
+#site-root .fg{margin-bottom:16px}
+#site-root .fg label{display:block;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.55);margin-bottom:7px}
+#site-root .fg input,#site-root .fg select,#site-root .fg textarea{width:100%;padding:11px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:9px;color:#fff;font-size:14px;font-family:var(--fb);outline:none;transition:border .2s}
+#site-root .fg input::placeholder,#site-root .fg textarea::placeholder{color:rgba(255,255,255,.3)}
+#site-root .fg input:focus,#site-root .fg select:focus,#site-root .fg textarea:focus{border-color:var(--sage-l)}
+#site-root .fg select option{background:var(--sage-d)}
+#site-root .fg textarea{min-height:90px;resize:vertical;line-height:1.6}
+#site-root .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#site-root .sbtn{width:100%;padding:13px;background:var(--gold);color:var(--ink);border:none;border-radius:40px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--fb);margin-top:4px;transition:all .25s}
+#site-root .sbtn:hover{background:var(--gold-l);transform:translateY(-1px)}
+#site-root .succ{display:none;text-align:center;padding:14px;background:rgba(74,124,111,.3);border-radius:9px;color:rgba(255,255,255,.9);font-size:14px;margin-top:10px}
+/* MAP */
+#site-root .mapsec{padding:0}
+#site-root .mapsec iframe{display:block;width:100%;height:340px;border:none}
+/* FOOTER */
+#site-root footer{background:var(--ink);padding:36px 5%;color:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
+#site-root .flogo{font-family:var(--fd);font-size:19px;font-weight:600;color:#fff}
+#site-root footer p{font-size:12px;text-align:center}
+#site-root .flinks{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}
+#site-root .flinks a{font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+#site-root .flinks a:hover{color:var(--sage-l)}
+/* STICKY WA */
+#site-root .swa{position:fixed;bottom:24px;right:24px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.5);z-index:200;text-decoration:none;animation:wap 2s infinite}
+#site-root .swa:hover{transform:scale(1.1)}
+#site-root .swa svg{width:26px;height:26px;fill:#fff}
+@keyframes wap{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.5)}50%{box-shadow:0 4px 30px rgba(37,211,102,.75)}}
+/* ADMIN BADGE */
+#site-root .admin-link{position:fixed;bottom:24px;left:24px;background:rgba(0,0,0,.6);color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:7px 13px;font-size:11px;text-decoration:none;backdrop-filter:blur(8px);transition:all .2s;z-index:200}
+#site-root .admin-link:hover{color:#fff}
+/* SCROLL ANIM */
+#site-root .fu{opacity:0;transform:translateY(28px);transition:all .55s ease}
+#site-root .fu.vis{opacity:1;transform:translateY(0)}
+/* MOBILE */
+@media(max-width:900px){
+  #site-root .hero{grid-template-columns:1fr;padding:95px 5% 55px;text-align:center;gap:36px}
+  #site-root .hbtns{justify-content:center}
+  #site-root .hstats{justify-content:center}
+  #site-root .hvisual{order:-1}
+  #site-root .himg{max-width:280px;margin:0 auto}
+  #site-root .fc1,#site-root .fc2{display:none}
+  #site-root .why-in{grid-template-columns:1fr}
+  #site-root .why-img{display:none}
+  #site-root .cin{grid-template-columns:1fr}
+  #site-root .nlinks{display:none}
+  #site-root .trust{gap:20px}
+  #site-root footer{flex-direction:column;text-align:center}
+  #site-root .flinks{justify-content:center}
+}
+@media(max-width:480px){
+  #site-root .frow{grid-template-columns:1fr}
+  #site-root .hstats{flex-direction:column;gap:18px}
+  #site-root .cform{padding:20px 16px}
+}
+</style>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 — ADMIN PANEL STYLES
+═══════════════════════════════════════════════ -->
+<style id="admin-css">
+#admin-root *{margin:0;padding:0;box-sizing:border-box}
+#admin-root{font-family:'Inter',sans-serif;background:#f4f5f7;color:#1a202c;min-height:100vh;display:flex;flex-direction:column}
+/* LOGIN */
+#login-overlay{position:fixed;inset:0;background:#0f1923;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .4s}
+.lbox{background:#1a2636;border:1px solid rgba(74,124,111,.3);border-radius:16px;padding:44px 36px;width:370px;text-align:center}
+.lbox .lmark{width:52px;height:52px;background:var(--sage);border-radius:12px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.lbox h1{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:4px}
+.lbox .lsub{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:28px}
+.lf{margin-bottom:14px;text-align:left}
+.lf label{display:block;font-size:11px;font-weight:600;color:rgba(255,255,255,.55);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.lf input{width:100%;padding:11px 13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:7px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border .2s}
+.lf input:focus{border-color:var(--sage)}
+.lf input::placeholder{color:rgba(255,255,255,.22)}
+.lbtn{width:100%;padding:12px;background:var(--sage);color:#fff;border:none;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:6px;transition:all .2s}
+.lbtn:hover{background:var(--sage-d)}
+.lerr{color:#fc8181;font-size:12px;margin-top:8px;display:none}
+/* ADMIN LAYOUT */
+#admin-root .abar{background:#0f1923;padding:0;display:flex;align-items:center;flex-wrap:wrap;gap:0;border-bottom:1px solid rgba(255,255,255,.08)}
+#admin-root .abar-brand{padding:14px 20px;border-right:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px}
+#admin-root .abar-brand .ab-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:#fff}
+#admin-root .abar-brand .ab-tag{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em}
+#admin-root .abar-nav{display:flex;align-items:center;flex:1;overflow-x:auto}
+#admin-root .abar-item{padding:14px 16px;font-size:12px;color:rgba(255,255,255,.45);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s;font-family:'Inter',sans-serif}
+#admin-root .abar-item:hover{color:rgba(255,255,255,.75)}
+#admin-root .abar-item.active{color:#fff;border-bottom-color:var(--sage)}
+#admin-root .abar-right{padding:10px 16px;display:flex;gap:8px;align-items:center;margin-left:auto}
+#admin-root .save-btn{padding:8px 18px;background:var(--sage);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:5px}
+#admin-root .save-btn:hover{background:var(--sage-d)}
+#admin-root .preview-link{padding:8px 14px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);border-radius:7px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+#admin-root .preview-link:hover{color:#fff}
+/* ADMIN CONTENT */
+#admin-root .acontent{flex:1;padding:24px 5%}
+/* CARD */
+#admin-root .acard{background:#fff;border:1px solid #e2e4e8;border-radius:11px;padding:22px;margin-bottom:18px}
+#admin-root .acard h3{font-size:14px;font-weight:600;margin-bottom:5px}
+#admin-root .acard .adesc{font-size:12px;color:#6b7280;margin-bottom:18px;line-height:1.5}
+/* FIELD */
+#admin-root .af{margin-bottom:14px}
+#admin-root .af label{display:block;font-size:11px;font-weight:600;color:#6b7280;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+#admin-root .af input,#admin-root .af select,#admin-root .af textarea{width:100%;padding:9px 11px;border:1px solid #e2e4e8;border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;color:#1a202c;background:#fff;outline:none;transition:border .2s}
+#admin-root .af input:focus,#admin-root .af select:focus,#admin-root .af textarea:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(74,124,111,.1)}
+#admin-root .af textarea{min-height:72px;resize:vertical;line-height:1.55}
+#admin-root .af .ahint{font-size:11px;color:#9ca3af;margin-top:3px}
+#admin-root .ag2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#admin-root .ag3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+/* REPEATER */
+#admin-root .ri{background:#f9fafb;border:1px solid #e2e4e8;border-radius:9px;padding:14px;margin-bottom:10px;position:relative}
+#admin-root .ri .rdel{position:absolute;top:10px;right:10px;width:26px;height:26px;background:#fee2e2;border:none;border-radius:5px;color:#e53e3e;font-size:15px;cursor:pointer}
+#admin-root .ri .rdel:hover{background:#e53e3e;color:#fff}
+#admin-root .add-btn{display:flex;align-items:center;gap:5px;padding:8px 14px;border:1px dashed var(--sage);border-radius:7px;background:transparent;color:var(--sage);font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px;transition:all .2s}
+#admin-root .add-btn:hover{background:rgba(74,124,111,.06)}
+/* IMG UPLOAD */
+#admin-root .iup{border:2px dashed #e2e4e8;border-radius:9px;padding:22px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+#admin-root .iup:hover{border-color:var(--sage);background:rgba(74,124,111,.03)}
+#admin-root .iup input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+#admin-root .iup .iico{font-size:26px;margin-bottom:7px}
+#admin-root .iup p{font-size:12px;color:#6b7280}
+#admin-root .iup strong{color:var(--sage);font-size:12px}
+#admin-root .iprev{width:100%;max-height:150px;object-fit:cover;border-radius:7px;margin-top:10px;display:none}
+/* COLOR ROW */
+#admin-root .crow{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:9px 12px;background:#f9fafb;border-radius:7px}
+#admin-root .crow label{flex:1;font-size:13px;font-weight:500}
+#admin-root .crow input[type=color]{width:36px;height:30px;border:1px solid #e2e4e8;border-radius:5px;cursor:pointer;padding:2px}
+#admin-root .crow .chex{font-size:11px;color:#9ca3af;font-family:monospace;width:62px}
+/* STATS */
+#admin-root .astats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+#admin-root .asb{background:#fff;border:1px solid #e2e4e8;border-radius:9px;padding:14px}
+#admin-root .asb .av{font-size:24px;font-weight:700}
+#admin-root .asb .al{font-size:11px;color:#6b7280;margin-top:2px;text-transform:uppercase;letter-spacing:.05em}
+/* HOURS */
+#admin-root .hr-row{display:grid;grid-template-columns:130px 1fr 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #f3f4f6}
+#admin-root .hr-row:last-child{border:none}
+#admin-root .hr-row .dl{font-size:13px;font-weight:500}
+#admin-root .hr-row input[type=time]{padding:6px 9px;border:1px solid #e2e4e8;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none}
+#admin-root .hr-row input[type=time]:focus{border-color:var(--sage)}
+#admin-root .ctog{display:flex;align-items:center;gap:5px;font-size:12px;color:#6b7280;cursor:pointer}
+#admin-root .ctog input{accent-color:#e53e3e}
+/* NOTICE */
+#admin-root .notice{padding:11px 14px;border-radius:7px;font-size:12px;margin-bottom:14px;line-height:1.5}
+#admin-root .n-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+#admin-root .n-ok{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}
+/* SAVED TOAST */
+#admin-toast{position:fixed;bottom:20px;right:20px;background:#1a202c;color:#fff;padding:10px 18px;border-radius:9px;font-size:13px;font-weight:500;z-index:9999;display:flex;align-items:center;gap:7px;box-shadow:0 4px 18px rgba(0,0,0,.2);transform:translateY(16px);opacity:0;transition:all .3s;pointer-events:none}
+#admin-toast.show{transform:translateY(0);opacity:1}
+#admin-toast.ok{border-left:3px solid #38a169}
+/* PANEL */
+#admin-root .apanel{display:none}
+#admin-root .apanel.active{display:block}
+/* LOGOUT */
+#admin-root .logout-btn{padding:8px 14px;background:rgba(229,62,62,.1);color:#e53e3e;border:1px solid rgba(229,62,62,.25);border-radius:7px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif}
+#admin-root .logout-btn:hover{background:rgba(229,62,62,.2)}
+@media(max-width:700px){
+  #admin-root .ag2,#admin-root .ag3,#admin-root .astats{grid-template-columns:1fr}
+  #admin-root .hr-row{grid-template-columns:1fr 1fr;gap:6px;flex-wrap:wrap}
+}
+</style>
+
+<!-- SHARED INTER FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;overflow:hidden">
+
+<!-- ═══════════════════════════════════════════════
+     ROUTER WRAPPER
+═══════════════════════════════════════════════ -->
+<div id="router" style="width:100%;height:100vh;overflow:hidden;position:relative"></div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4 — WEBSITE TEMPLATE (hidden until routed)
+═══════════════════════════════════════════════ -->
+<div id="site-root" style="display:none;height:100vh;overflow-y:auto">
+
+<!-- STICKY WA -->
+<a id="swa" href="#" class="swa" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.862L.057 23.428a.75.75 0 00.915.915l5.566-1.476A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 01-4.962-1.357l-.355-.213-3.683.976.977-3.581-.232-.369A9.725 9.725 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+</a>
+<a href="?view=admin" class="admin-link">⚙ Admin</a>
+
+<!-- NAV -->
+<nav id="s-nav">
+  <a class="nlogo" href="?view=site">
+    <div class="nlogo-icon"><img id="s-logo-img" alt="Logo"><span class="nfb">🦷</span></div>
+    <div><div class="nname" id="s-cname">Dr. Kapoor Dental Clinic</div><div class="ntag" id="s-ctag">Amritsar's Trusted Dental Care</div></div>
+  </a>
+  <ul class="nlinks"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a id="s-phone" href="tel:" class="ncta">📞 Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="htag" id="s-htag">Amritsar's Trusted Dental Care</div>
+    <h1 id="s-h1">Your Perfect <em id="s-em">Smile</em><br>Starts Here</h1>
+    <p class="hsub" id="s-sub">Painless, affordable dental treatments by Dr. Kapoor — 15+ years of experience, advanced technology, and a gentle touch.</p>
+    <div class="hbtns"><a href="#contact" class="btn-p">Book Appointment →</a><a id="s-wa1" href="#" class="btn-s" target="_blank">💬 WhatsApp Us</a></div>
+    <div class="hstats" id="s-stats"></div>
+  </div>
+  <div class="hvisual">
+    <div class="himg" id="s-himg">
+      <div class="hph"><div class="phi">🦷</div><p id="s-hph-txt">Add clinic photo<br>in Admin Panel</p></div>
+    </div>
+    <div class="fc fc1"><div class="fci" style="background:#e8f4f1">🦷</div><div><div class="fcv">Painless</div><div class="fcl">Modern techniques</div></div></div>
+    <div class="fc fc2"><div class="fci" style="background:#fdf6e3">⭐</div><div><div class="fcv">4.9 / 5</div><div class="fcl">Patient rating</div></div></div>
+  </div>
+</section>
+
+<div class="trust" id="s-trust"></div>
+
+<section class="sec" id="services">
+  <div class="sch fu"><div class="stag">What We Offer</div><h2 class="stitle">Complete Dental Care<br>Under One Roof</h2></div>
+  <div class="sgrid" id="s-svcs"></div>
+</section>
+
+<section class="why" id="about">
+  <div class="why-in">
+    <div class="why-img" id="s-why-img"><span>🩺</span></div>
+    <div>
+      <div class="stag" id="s-atag">Why Choose Us</div>
+      <h2 class="stitle" id="s-ah">15 Years of Gentle, Expert Care</h2>
+      <div class="wlist" id="s-why"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gal fu" id="s-gal" style="display:none">
+  <div class="sch"><div class="stag">Our Clinic</div><h2 class="stitle">A Look Inside</h2></div>
+  <div class="ggrid" id="s-ggrid"></div>
+</section>
+
+<section class="revs" id="reviews">
+  <div class="sch fu"><div class="stag">Patient Reviews</div><h2 class="stitle">What Our Patients Say</h2></div>
+  <div class="rgrid" id="s-revs"></div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="cin">
+    <div class="cinfo">
+      <h2>Ready for Your Best Smile?</h2>
+      <p>Book an appointment today. Walk-ins welcome, appointments get priority.</p>
+      <div class="cdets" id="s-cdets"></div>
+      <a id="s-wa2" href="#" class="wa-btn" target="_blank">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="cform">
+      <h3>Book Appointment</h3>
+      <div class="frow"><div class="fg"><label>Name</label><input type="text" id="fn" placeholder="Full name"></div><div class="fg"><label>Phone</label><input type="tel" id="fp" placeholder="+91 XXXXX XXXXX"></div></div>
+      <div class="fg"><label>Service</label><select id="fsvc"><option value="">Select treatment...</option></select></div>
+      <div class="fg"><label>Preferred Time</label><input type="text" id="ft" placeholder="e.g. Monday evening"></div>
+      <div class="fg"><label>Concerns</label><textarea id="fnote" placeholder="Tell us about your dental concern..."></textarea></div>
+      <button class="sbtn" onclick="submitForm()">Request Appointment →</button>
+      <div class="succ" id="fsucc">✓ We'll confirm your slot on WhatsApp within 2 hours!</div>
+    </div>
+  </div>
+</section>
+
+<div class="mapsec"><iframe id="s-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27262!2d74.8723!3d31.634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964c8f6cb5f5d%3A0xbfbdf5b1d85d0ff0!2sAmritsar!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy" title="Location"></iframe></div>
+
+<footer><div class="flogo" id="s-fname">Dr. Kapoor Dental Clinic</div><p id="s-fcopy">© 2025 Dr. Kapoor Dental Clinic, Amritsar</p><div class="flinks"><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a><a id="s-fwa" href="#" target="_blank">WhatsApp</a><a href="?view=admin">Admin</a></div></footer>
+</div><!-- end site-root -->
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 5 — ADMIN PANEL (hidden until routed)
+═══════════════════════════════════════════════ -->
+<div id="admin-root" style="display:none">
+
+<div id="login-overlay">
+  <div class="lbox">
+    <div class="lmark">⚙</div>
+    <h1>Admin Panel</h1>
+    <div class="lsub" id="a-login-sub">CMS — Website Manager</div>
+    <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="admin" autocomplete="username"></div>
+    <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="lbtn" onclick="doLogin()">Sign In →</button>
+    <div class="lerr" id="lerr">Incorrect credentials</div>
+    <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,.2)">Default: admin / clinic2025</p>
+  </div>
+</div>
+
+<div class="abar">
+  <div class="abar-brand"><div class="lmark" style="width:32px;height:32px;font-size:16px;border-radius:8px;background:var(--sage);display:flex;align-items:center;justify-content:center;color:#fff">🦷</div><div><div class="ab-name" id="a-sname">Dr. Kapoor Dental</div><div class="ab-tag">CMS Admin</div></div></div>
+  <div class="abar-nav" id="abar-nav">
+    <div class="abar-item active" data-panel="dash" onclick="switchAdmin(this)">Dashboard</div>
+    <div class="abar-item" data-panel="ident" onclick="switchAdmin(this)">Logo & Brand</div>
+    <div class="abar-item" data-panel="ahero" onclick="switchAdmin(this)">Hero</div>
+    <div class="abar-item" data-panel="asvcs" onclick="switchAdmin(this)">Services</div>
+    <div class="abar-item" data-panel="awhy" onclick="switchAdmin(this)">About</div>
+    <div class="abar-item" data-panel="arevs" onclick="switchAdmin(this)">Reviews</div>
+    <div class="abar-item" data-panel="agal" onclick="switchAdmin(this)">Gallery</div>
+    <div class="abar-item" data-panel="acon" onclick="switchAdmin(this)">Contact & Hours</div>
+    <div class="abar-item" data-panel="aseo" onclick="switchAdmin(this)">SEO</div>
+    <div class="abar-item" data-panel="atheme" onclick="switchAdmin(this)">Theme</div>
+    <div class="abar-item" data-panel="aset" onclick="switchAdmin(this)">Settings</div>
+  </div>
+  <div class="abar-right">
+    <span style="font-size:11px;color:rgba(255,255,255,.3)" id="a-lastsaved">Never saved</span>
+    <a href="?view=site" class="preview-link" target="_blank">↗ View Site</a>
+    <button class="save-btn" onclick="saveAll()">💾 Save & Publish</button>
+    <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+  </div>
+</div>
+
+<div class="acontent">
+
+<!-- DASHBOARD -->
+<div class="apanel active" id="apanel-dash">
+  <div class="notice n-ok">✓ Admin panel active. Edit any section above, then click <strong>Save & Publish</strong>.</div>
+  <div class="astats">
+    <div class="asb"><div class="av" style="color:var(--sage)" id="a-svccount">6</div><div class="al">Services</div></div>
+    <div class="asb"><div class="av" style="color:#38a169" id="a-revcount">3</div><div class="al">Testimonials</div></div>
+    <div class="asb"><div class="av" style="color:#d97706" id="a-galcount">0</div><div class="al">Gallery Photos</div></div>
+    <div class="asb"><div class="av"><span style="background:#dcfce7;color:#166534;padding:2px 10px;border-radius:99px;font-size:13px">Live</span></div><div class="al">Site Status</div></div>
+  </div>
+  <div class="ag2">
+    <div class="acard"><h3>Quick Navigation</h3><p class="adesc">Jump to any section</p>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <button onclick="switchAdminByKey('ident')" style="text-align:left;padding:9px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit;display:flex;justify-content:space-between">Logo & Clinic Name <span style="color:#9ca3af">→</span></button>
+        <button onclick="switchAdminByKey('ahero')" style="text-align:left;padding:9px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit;display:flex;justify-content:space-between">Hero Text & Photo <span style="color:#9ca3af">→</span></button>
+        <button onclick="switchAdminByKey('asvcs')" style="text-align:left;padding:9px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit;display:flex;justify-content:space-between">Services & Pricing <span style="color:#9ca3af">→</span></button>
+        <button onclick="switchAdminByKey('acon')" style="text-align:left;padding:9px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit;display:flex;justify-content:space-between">Contact & Hours <span style="color:#9ca3af">→</span></button>
+        <button onclick="switchAdminByKey('agal')" style="text-align:left;padding:9px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit;display:flex;justify-content:space-between">Upload Photos <span style="color:#9ca3af">→</span></button>
+      </div>
+    </div>
+    <div class="acard"><h3>How To Use</h3><p class="adesc">Step-by-step guide</p>
+      <ol style="font-size:13px;color:#6b7280;line-height:2.1;padding-left:18px">
+        <li>Click any tab in the top bar</li>
+        <li>Edit text, upload images, add/remove items</li>
+        <li>Click <strong style="color:#1a202c">Save & Publish</strong></li>
+        <li>Click <strong style="color:#1a202c">↗ View Site</strong> to see live result</li>
+        <li>Export JSON backup anytime from Settings</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- IDENTITY -->
+<div class="apanel" id="apanel-ident">
+  <div class="acard"><h3>Clinic Logo</h3><p class="adesc">Upload your logo. PNG with transparent background recommended (200×60px).</p>
+    <div class="iup" onclick="document.getElementById('logo-file').click()">
+      <input type="file" id="logo-file" accept="image/*" onchange="uploadImg(this,'logo-prev','logo')">
+      <div class="iico">🖼️</div><p><strong>Click to upload logo</strong></p><p>PNG, SVG or JPG — max 2MB</p>
+      <img id="logo-prev" class="iprev">
+    </div>
+  </div>
+  <div class="acard"><h3>Clinic Identity</h3><p class="adesc">Used in navbar, footer, and browser tab.</p>
+    <div class="ag2">
+      <div class="af"><label>Clinic Name</label><input type="text" id="a-name" placeholder="Dr. Kapoor Dental Clinic"></div>
+      <div class="af"><label>Doctor Name</label><input type="text" id="a-doc" placeholder="Dr. Kapoor"></div>
+    </div>
+    <div class="af"><label>Tagline</label><input type="text" id="a-tagline" placeholder="Amritsar's Trusted Dental Care"></div>
+    <div class="af"><label>WhatsApp Number (with country code)</label><input type="tel" id="a-wa" placeholder="+919814567890"><div class="ahint">Used for all WhatsApp buttons across the site</div></div>
+  </div>
+  <div class="acard"><h3>Hero Clinic Photo</h3><p class="adesc">Main image in the hero section. Best: professional clinic/doctor photo. 800×1000px recommended.</p>
+    <div class="iup" onclick="document.getElementById('hero-photo-file').click()">
+      <input type="file" id="hero-photo-file" accept="image/*" onchange="uploadImg(this,'hero-photo-prev','heroPhoto')">
+      <div class="iico">📷</div><p><strong>Click to upload hero photo</strong></p><p>JPG or PNG — max 4MB</p>
+      <img id="hero-photo-prev" class="iprev">
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="apanel" id="apanel-ahero">
+  <div class="acard"><h3>Main Headline</h3><p class="adesc">Large text at top of page. The "highlighted" word gets a green underline accent.</p>
+    <div class="af"><label>Headline Part 1</label><input type="text" id="a-h1a" placeholder="Your Perfect"></div>
+    <div class="af"><label>Highlighted Word (green accent)</label><input type="text" id="a-hl" placeholder="Smile"></div>
+    <div class="af"><label>Headline Part 2</label><input type="text" id="a-h1b" placeholder="Starts Here"></div>
+    <div class="af"><label>Subtitle Text</label><textarea id="a-sub"></textarea></div>
+  </div>
+  <div class="acard"><h3>Stats Bar</h3><p class="adesc">3 numbers shown below the headline (patients, years, rating).</p>
+    <div class="ag3">
+      <div><div class="af"><label>Stat 1 Number</label><input type="text" id="a-s1n" placeholder="4800+"></div><div class="af"><label>Stat 1 Label</label><input type="text" id="a-s1l" placeholder="Happy Patients"></div></div>
+      <div><div class="af"><label>Stat 2 Number</label><input type="text" id="a-s2n" placeholder="15+"></div><div class="af"><label>Stat 2 Label</label><input type="text" id="a-s2l" placeholder="Years Experience"></div></div>
+      <div><div class="af"><label>Stat 3 Number</label><input type="text" id="a-s3n" placeholder="4.9★"></div><div class="af"><label>Stat 3 Label</label><input type="text" id="a-s3l" placeholder="Google Rating"></div></div>
+    </div>
+  </div>
+  <div class="acard"><h3>Trust Bar (dark strip)</h3><p class="adesc">5 trust signals in the dark green strip below the hero.</p>
+    <div id="a-trust-ed"></div>
+    <button class="add-btn" onclick="addTrust()">+ Add Trust Item</button>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="apanel" id="apanel-asvcs">
+  <div class="acard"><h3>Services</h3><p class="adesc">Add, edit or remove treatment cards.</p>
+    <div class="notice n-info">💡 Click × to delete a service. Changes apply after Save & Publish.</div>
+    <div id="a-svcs-ed"></div>
+    <button class="add-btn" onclick="addService()">+ Add Service</button>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="apanel" id="apanel-awhy">
+  <div class="acard"><h3>About Section Heading</h3>
+    <div class="af"><label>Section Tag</label><input type="text" id="a-atag" placeholder="Why Choose Us"></div>
+    <div class="af"><label>Heading</label><input type="text" id="a-ah" placeholder="15 Years of Gentle, Expert Care"></div>
+  </div>
+  <div class="acard"><h3>Why Choose Us — Points</h3>
+    <div id="a-why-ed"></div>
+    <button class="add-btn" onclick="addWhy()">+ Add Point</button>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="apanel" id="apanel-arevs">
+  <div class="acard"><h3>Patient Testimonials</h3><p class="adesc">Real patient reviews. Use 2-letter initials for the avatar circle.</p>
+    <div id="a-revs-ed"></div>
+    <button class="add-btn" onclick="addReview()">+ Add Review</button>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="apanel" id="apanel-agal">
+  <div class="acard"><h3>Clinic Photo Gallery</h3><p class="adesc">Photos of your clinic, team, or equipment. Appears as a gallery section on the website.</p>
+    <div class="notice" style="background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:11px 14px;border-radius:7px;font-size:12px;margin-bottom:14px">📸 Upload high-quality JPG/PNG photos (max 4MB each)</div>
+    <label class="iup" style="display:block;cursor:pointer">
+      <input type="file" accept="image/*" multiple onchange="uploadGallery(this)" style="display:none">
+      <div class="iico">📁</div><p><strong>Click to upload photos</strong></p><p>Select multiple at once</p>
+    </label>
+    <div id="a-gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px"></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="apanel" id="apanel-acon">
+  <div class="acard"><h3>Contact Information</h3>
+    <div class="ag2">
+      <div class="af"><label>Phone Number</label><input type="tel" id="a-phone" placeholder="+91 98145 67890"></div>
+      <div class="af"><label>Email Address</label><input type="email" id="a-email" placeholder="drkapoor@clinic.in"></div>
+    </div>
+    <div class="af"><label>Full Address</label><textarea id="a-addr" style="min-height:54px"></textarea></div>
+    <div class="af"><label>Google Maps Embed URL</label><input type="url" id="a-maps" placeholder="https://www.google.com/maps/embed?..."><div class="ahint">Google Maps → Share → Embed a map → copy the src URL only</div></div>
+  </div>
+  <div class="acard"><h3>Opening Hours</h3><div id="a-hours-ed"></div></div>
+</div>
+
+<!-- SEO -->
+<div class="apanel" id="apanel-aseo">
+  <div class="acard"><h3>SEO & Meta Tags</h3><p class="adesc">Controls how your site appears in Google. Title: under 60 chars. Description: under 155.</p>
+    <div class="af"><label>Page Title</label><input type="text" id="a-stitle" placeholder="Dr. Kapoor Dental Clinic | Best Dentist in Amritsar"><div class="ahint" id="a-stc">0 / 60</div></div>
+    <div class="af"><label>Meta Description</label><textarea id="a-sdesc" style="min-height:60px"></textarea><div class="ahint" id="a-sdc">0 / 155</div></div>
+    <div class="af"><label>Keywords</label><input type="text" id="a-skw" placeholder="dentist amritsar, dental clinic amritsar"></div>
+  </div>
+</div>
+
+<!-- THEME -->
+<div class="apanel" id="apanel-atheme">
+  <div class="acard"><h3>Colors</h3><p class="adesc">Change your website's color palette. Applies everywhere after Save & Publish.</p>
+    <div class="crow"><label>Primary (sage green)</label><input type="color" id="c-pri" value="#4a7c6f" oninput="document.getElementById('h-pri').textContent=this.value"><span class="chex" id="h-pri">#4a7c6f</span></div>
+    <div class="crow"><label>Accent (gold)</label><input type="color" id="c-acc" value="#c9a84c" oninput="document.getElementById('h-acc').textContent=this.value"><span class="chex" id="h-acc">#c9a84c</span></div>
+    <div class="crow"><label>Text / Ink</label><input type="color" id="c-ink" value="#1a1a1a" oninput="document.getElementById('h-ink').textContent=this.value"><span class="chex" id="h-ink">#1a1a1a</span></div>
+    <div class="crow"><label>Background</label><input type="color" id="c-bg" value="#faf8f4" oninput="document.getElementById('h-bg').textContent=this.value"><span class="chex" id="h-bg">#faf8f4</span></div>
+  </div>
+  <div class="acard"><h3>Fonts</h3>
+    <div class="ag2">
+      <div class="af"><label>Heading Font</label><select id="a-fh"><option value="Cormorant Garamond">Cormorant Garamond (Elegant)</option><option value="Playfair Display">Playfair Display (Sophisticated)</option><option value="Merriweather">Merriweather (Trustworthy)</option><option value="Poppins">Poppins (Modern)</option><option value="Montserrat">Montserrat (Bold)</option></select></div>
+      <div class="af"><label>Body Font</label><select id="a-fb"><option value="DM Sans">DM Sans (Clean)</option><option value="Inter">Inter (Neutral)</option><option value="Open Sans">Open Sans (Friendly)</option><option value="Nunito">Nunito (Warm)</option></select></div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="apanel" id="apanel-aset">
+  <div class="acard"><h3>Change Admin Credentials</h3>
+    <div class="ag2">
+      <div class="af"><label>Username</label><input type="text" id="s-user" placeholder="admin"></div>
+      <div class="af"><label>New Password</label><input type="password" id="s-pass" placeholder="New password"></div>
+    </div>
+    <button onclick="saveCreds()" style="padding:9px 18px;background:var(--sage);color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit">Update Credentials</button>
+  </div>
+  <div class="acard"><h3>Data Management</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="exportData()" style="padding:8px 14px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit">📥 Export JSON Backup</button>
+      <button onclick="document.getElementById('import-file').click()" style="padding:8px 14px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit">📤 Import Backup</button>
+      <button onclick="resetData()" style="padding:8px 14px;background:#fee2e2;border:1px solid #fca5a5;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;color:#e53e3e">🗑 Reset to Defaults</button>
+    </div>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(this)">
+  </div>
+</div>
+
+</div><!-- end acontent -->
+</div><!-- end admin-root -->
+
+<div id="admin-toast"></div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 6 — MASTER JAVASCRIPT ENGINE
+═══════════════════════════════════════════════ -->
+<script>
+'use strict';
+// ── DEFAULTS ──────────────────────────────────────────────────────
+const DEF = {
+  creds:{user:'admin',pass:'clinic2025'},
+  ident:{name:'Dr. Kapoor Dental Clinic',doc:'Dr. Kapoor',tagline:"Amritsar's Trusted Dental Care",wa:'+919814567890'},
+  hero:{h1a:'Your Perfect',hl:'Smile',h1b:'Starts Here',sub:'Painless, affordable dental treatments by Dr. Kapoor — 15+ years of experience, advanced technology, and a gentle touch that puts you at ease.',s1n:'4800+',s1l:'Happy Patients',s2n:'15+',s2l:'Years Experience',s3n:'4.9★',s3l:'Google Rating'},
+  trust:[{ico:'🛡️',txt:'BDS, MDS Certified'},{ico:'📅',txt:'Mon–Sat, 9am–8pm'},{ico:'📍',txt:'Lawrence Road, Amritsar'},{ico:'📞',txt:'+91 98145 67890'},{ico:'⭐',txt:'EMI Available'}],
+  svcs:[
+    {ico:'🦷',title:'Teeth Cleaning & Scaling',desc:'Professional deep cleaning to remove tartar and brighten your smile. Recommended every 6 months.',price:'From ₹800'},
+    {ico:'✨',title:'Teeth Whitening',desc:'Advanced laser whitening that safely lightens teeth by 4–8 shades in a single session.',price:'From ₹3,500'},
+    {ico:'🔧',title:'Root Canal Treatment',desc:'Painless single-visit RCT using rotary endodontics. Save your natural tooth.',price:'From ₹4,000'},
+    {ico:'😁',title:'Dental Implants',desc:'Permanent, natural-looking tooth replacement with titanium implants.',price:'From ₹18,000'},
+    {ico:'📐',title:'Braces & Aligners',desc:'Metal, ceramic braces and clear aligners for adults and children.',price:'From ₹15,000'},
+    {ico:'👑',title:'Crowns & Veneers',desc:'Ceramic crowns and porcelain veneers to restore or transform your smile.',price:'From ₹4,500'}
+  ],
+  about:{tag:'Why Choose Us',heading:'15 Years of Gentle, Expert Care'},
+  why:[
+    {title:'Painless Techniques',desc:'Modern anaesthesia and tools ensure virtually pain-free treatment for every patient, including children.'},
+    {title:'Sterilized & Hygienic',desc:'Strict ISO sterilization protocols and single-use instruments. Your safety is always first.'},
+    {title:'Affordable + EMI',desc:'Transparent pricing with no hidden fees. EMI options available on treatments above ₹5,000.'},
+    {title:'Evening Appointments',desc:'Open till 8pm, Monday to Saturday. We fit around your schedule.'}
+  ],
+  revs:[
+    {stars:5,txt:'"Dr. Kapoor is genuinely the best dentist I\'ve been to. Root canal was completely painless."',name:'Rajesh Kumar',loc:'Lawrence Road, Amritsar',init:'RK'},
+    {stars:5,txt:'"My daughter was terrified of dentists. Now she loves coming! So gentle with kids."',name:'Priya Sharma',loc:'Ranjit Avenue, Amritsar',init:'PS'},
+    {stars:5,txt:'"Dental implants 2 years ago — still perfect. Fair pricing, everything explained clearly."',name:'Gurpreet Singh',loc:'GT Road, Amritsar',init:'GS'}
+  ],
+  gal:[],
+  contact:{phone:'+91 98145 67890',email:'drkapoor@clinic.in',addr:'Lawrence Road, Near Bus Stand, Amritsar, Punjab 143001',maps:'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27262!2d74.8723!3d31.634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964c8f6cb5f5d%3A0xbfbdf5b1d85d0ff0!2sAmritsar!5e0!3m2!1sen!2sin!4v1'},
+  hours:{Mon:{o:'09:00',c:'20:00',cl:false},Tue:{o:'09:00',c:'20:00',cl:false},Wed:{o:'09:00',c:'20:00',cl:false},Thu:{o:'09:00',c:'20:00',cl:false},Fri:{o:'09:00',c:'20:00',cl:false},Sat:{o:'09:00',c:'18:00',cl:false},Sun:{o:'',c:'',cl:true}},
+  seo:{title:'Dr. Kapoor Dental Clinic | Best Dentist in Amritsar',desc:'Painless, affordable dental care in Amritsar. Teeth cleaning, whitening, implants, braces. Book: +91 98145 67890',kw:'dentist amritsar, dental clinic amritsar, teeth whitening amritsar'},
+  theme:{pri:'#4a7c6f',acc:'#c9a84c',ink:'#1a1a1a',bg:'#faf8f4',fh:'Cormorant Garamond',fb:'DM Sans'},
+  imgs:{logo:null,heroPhoto:null}
+};
+
+let D = JSON.parse(JSON.stringify(DEF));
+
+// ── ROUTER ────────────────────────────────────────────────────────
+function route(){
+  const p = new URLSearchParams(window.location.search).get('view');
+  if(p==='admin'){
+    document.getElementById('site-root').style.display='none';
+    document.getElementById('admin-root').style.display='flex';
+    document.getElementById('admin-root').style.flexDirection='column';
+    document.getElementById('admin-root').style.height='100vh';
+    document.getElementById('admin-root').style.overflow='hidden';
+    loadAdminData();
+  } else {
+    document.getElementById('site-root').style.display='block';
+    document.getElementById('admin-root').style.display='none';
+    loadSiteData();
+  }
+}
+
+// ── DATA ──────────────────────────────────────────────────────────
+function loadSiteData(){
+  try{ const s=localStorage.getItem('cms_v2'); if(s) D=Object.assign({},DEF,JSON.parse(s)); }catch(e){}
+  applyTheme(); renderSite();
+}
+function loadAdminData(){
+  try{
+    const s=localStorage.getItem('cms_v2'); if(s) D=Object.assign({},DEF,JSON.parse(s));
+    const c=localStorage.getItem('cms_v2_creds'); if(c) D.creds=JSON.parse(c);
+  }catch(e){}
+}
+function gv(id){const el=document.getElementById(id);return el?el.value:'';}
+function sv(id,val){const el=document.getElementById(id);if(el&&val!=null)el.value=val;}
+
+// ── THEME ─────────────────────────────────────────────────────────
+function applyTheme(){
+  const t=D.theme||DEF.theme;
+  function mix(h,n){const v=parseInt(h.replace('#',''),16);const r=(v>>16);const g=(v>>8)&0xff;const b=v&0xff;return `rgb(${Math.max(0,Math.min(255,r+n))},${Math.max(0,Math.min(255,g+n))},${Math.max(0,Math.min(255,b+n))})`}
+  document.getElementById('theme-css').textContent=`:root{--sage:${t.pri};--sage-l:${mix(t.pri,35)};--sage-d:${mix(t.pri,-35)};--gold:${t.acc};--gold-l:${mix(t.acc,35)};--ivory:${t.bg};--cream:${mix(t.bg,-10)};--ink:${t.ink};--mid:#5c5c5c;--hint:#9a9a9a;--fd:'${t.fh}',serif;--fb:'${t.fb}',sans-serif;}`;
+  const fh=t.fh.replace(/ /g,'+'); const fb=t.fb.replace(/ /g,'+');
+  document.getElementById('gfonts').href=`https://fonts.googleapis.com/css2?family=${fh}:wght@400;600;700&family=${fb}:wght@300;400;500&display=swap`;
+}
+
+// ── SITE RENDER ───────────────────────────────────────────────────
+function renderSite(){
+  const wa=(D.ident?.wa||DEF.ident.wa).replace(/[^+0-9]/g,'').replace('+','');
+  const waUrl=`https://wa.me/${wa}?text=${encodeURIComponent('Hi! I would like to book an appointment.')}`;
+  const name=D.ident?.name||DEF.ident.name;
+  // Meta
+  document.getElementById('page-title').textContent=(D.seo?.title)||name+' | Best Dentist in Amritsar';
+  document.getElementById('meta-desc').content=D.seo?.desc||'';
+  document.getElementById('meta-kw').content=D.seo?.kw||'';
+  // Nav
+  sv('s-cname',name); sv('s-ctag',D.ident?.tagline||DEF.ident.tagline);
+  document.getElementById('s-phone').href='tel:'+(D.contact?.phone||'').replace(/\s/g,'');
+  // Logo
+  if(D.imgs?.logo){const li=document.getElementById('s-logo-img');li.src=D.imgs.logo;li.style.display='block';document.querySelector('#site-root .nfb').style.display='none';}
+  // WA links
+  [document.getElementById('swa'),document.getElementById('s-wa1'),document.getElementById('s-wa2'),document.getElementById('s-fwa')].forEach(el=>{if(el)el.href=waUrl;});
+  // Hero
+  document.getElementById('s-htag').textContent=D.ident?.tagline||DEF.ident.tagline;
+  const h=D.hero||DEF.hero;
+  document.getElementById('s-h1').innerHTML=`${h.h1a||'Your Perfect'} <em id="s-em">${h.hl||'Smile'}</em><br>${h.h1b||'Starts Here'}`;
+  document.getElementById('s-sub').textContent=h.sub||'';
+  // Hero photo
+  if(D.imgs?.heroPhoto){const hi=document.getElementById('s-himg');hi.innerHTML='';const img=document.createElement('img');img.src=D.imgs.heroPhoto;img.alt='Clinic';hi.appendChild(img);}
+  // Stats
+  document.getElementById('s-stats').innerHTML=[[h.s1n||'4800+',h.s1l||'Happy Patients'],[h.s2n||'15+',h.s2l||'Years Experience'],[h.s3n||'4.9★',h.s3l||'Google Rating']].map(([n,l])=>`<div class="hstat"><div class="snum">${n}</div><div class="slbl">${l}</div></div>`).join('');
+  // Trust
+  document.getElementById('s-trust').innerHTML=(D.trust||DEF.trust).map(t=>`<div class="titem"><span style="font-size:18px">${t.ico}</span>${t.txt}</div>`).join('');
+  // Services
+  const svcs=D.svcs||DEF.svcs;
+  document.getElementById('s-svcs').innerHTML=svcs.map(s=>`<div class="scard fu"><div class="sico">${s.ico}</div><h3>${s.title}</h3><p>${s.desc}</p><span class="ptag">${s.price}</span></div>`).join('');
+  // Form services dropdown
+  document.getElementById('fsvc').innerHTML='<option value="">Select treatment...</option>'+svcs.map(s=>`<option>${s.title}</option>`).join('');
+  // About
+  const ab=D.about||DEF.about;
+  sv('s-atag',ab.tag); sv('s-ah',ab.heading);
+  document.getElementById('s-why').innerHTML=(D.why||DEF.why).map((w,i)=>`<div class="wi fu"><div class="wnum">0${i+1}</div><div><h4>${w.title}</h4><p>${w.desc}</p></div></div>`).join('');
+  // Gallery
+  const gal=D.gal||[];
+  if(gal.length>0){document.getElementById('s-gal').style.display='block';document.getElementById('s-ggrid').innerHTML=gal.map(src=>`<div class="gitem fu"><img src="${src}" alt="Clinic photo" loading="lazy"></div>`).join('');}
+  // Reviews
+  document.getElementById('s-revs').innerHTML=(D.revs||DEF.revs).map(r=>`<div class="rcard fu"><div class="stars">${'★'.repeat(r.stars||5)}</div><p class="rtext">${r.txt}</p><div class="rev"><div class="rav">${r.init}</div><div><div class="rname">${r.name}</div><div class="rloc">${r.loc}</div></div></div></div>`).join('');
+  // Contact
+  const con=D.contact||DEF.contact;
+  document.getElementById('s-cdets').innerHTML=[con.addr?`<div class="cdet"><div class="cdet-ico">📍</div><span>${con.addr}</span></div>`:'',con.phone?`<div class="cdet"><div class="cdet-ico">📞</div><span>${con.phone}</span></div>`:'',con.email?`<div class="cdet"><div class="cdet-ico">📧</div><span>${con.email}</span></div>`:''].join('');
+  if(con.maps)document.getElementById('s-map').src=con.maps;
+  // Footer
+  sv('s-fname',name);
+  document.getElementById('s-fcopy').innerHTML=`© ${new Date().getFullYear()} ${name}. All rights reserved.`;
+  // Scroll animation
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('#site-root .fu').forEach(el=>obs.observe(el));
+  // Nav scroll
+  document.getElementById('site-root').addEventListener('scroll',()=>{document.getElementById('s-nav').style.boxShadow=document.getElementById('site-root').scrollTop>40?'0 2px 18px rgba(0,0,0,.08)':'none';});
+}
+
+function submitForm(){
+  const n=document.getElementById('fn').value.trim(),p=document.getElementById('fp').value.trim();
+  if(!n||!p){alert('Please enter your name and phone number.');return;}
+  const svc=document.getElementById('fsvc').value,t=document.getElementById('ft').value,note=document.getElementById('fnote').value;
+  const wa=(D.ident?.wa||DEF.ident.wa).replace(/[^0-9]/g,'');
+  const msg=encodeURIComponent(`Hi! I'd like to book an appointment.\n\nName: ${n}\nService: ${svc||'General'}\nTime: ${t||'Flexible'}\nNote: ${note||'None'}`);
+  document.getElementById('fsucc').style.display='block';
+  setTimeout(()=>window.open(`https://wa.me/${wa}?text=${msg}`,'_blank'),600);
+}
+
+// ── ADMIN LOGIN ───────────────────────────────────────────────────
+function doLogin(){
+  const u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value;
+  const creds=D.creds||DEF.creds;
+  if(u===creds.user&&p===creds.pass){
+    const ol=document.getElementById('login-overlay');ol.style.opacity='0';setTimeout(()=>ol.style.display='none',400);
+    populateAdmin();
+  }else{document.getElementById('lerr').style.display='block';}
+}
+function doLogout(){if(confirm('Sign out?'))window.location.href='?view=admin';}
+
+// ── ADMIN PANEL SWITCH ────────────────────────────────────────────
+function switchAdmin(el){
+  document.querySelectorAll('.abar-item').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.apanel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  const key=el.dataset.panel;
+  document.getElementById('apanel-'+key).classList.add('active');
+}
+function switchAdminByKey(k){const el=document.querySelector(`[data-panel="${k}"]`);if(el)switchAdmin(el);}
+
+// ── POPULATE ADMIN ────────────────────────────────────────────────
+function populateAdmin(){
+  const id=D.ident||DEF.ident;
+  sv('a-name',id.name);sv('a-doc',id.doc);sv('a-tagline',id.tagline);sv('a-wa',id.wa);
+  document.getElementById('a-sname').textContent=id.name||'Dr. Kapoor Dental';
+  document.getElementById('a-login-sub').textContent='CMS — '+id.name;
+  const h=D.hero||DEF.hero;
+  sv('a-h1a',h.h1a);sv('a-hl',h.hl);sv('a-h1b',h.h1b);sv('a-sub',h.sub);
+  sv('a-s1n',h.s1n);sv('a-s1l',h.s1l);sv('a-s2n',h.s2n);sv('a-s2l',h.s2l);sv('a-s3n',h.s3n);sv('a-s3l',h.s3l);
+  sv('a-atag',(D.about||DEF.about).tag);sv('a-ah',(D.about||DEF.about).heading);
+  const con=D.contact||DEF.contact;
+  sv('a-phone',con.phone);sv('a-email',con.email);sv('a-addr',con.addr);sv('a-maps',con.maps);
+  const seo=D.seo||DEF.seo;
+  sv('a-stitle',seo.title);sv('a-sdesc',seo.desc);sv('a-skw',seo.kw);
+  const th=D.theme||DEF.theme;
+  document.getElementById('c-pri').value=th.pri;document.getElementById('h-pri').textContent=th.pri;
+  document.getElementById('c-acc').value=th.acc;document.getElementById('h-acc').textContent=th.acc;
+  document.getElementById('c-ink').value=th.ink;document.getElementById('h-ink').textContent=th.ink;
+  document.getElementById('c-bg').value=th.bg;document.getElementById('h-bg').textContent=th.bg;
+  sv('a-fh',th.fh);sv('a-fb',th.fb);
+  if(D.imgs?.logo){showPrev('logo-prev',D.imgs.logo);}
+  if(D.imgs?.heroPhoto){showPrev('hero-photo-prev',D.imgs.heroPhoto);}
+  buildTrustEd();buildSvcsEd();buildWhyEd();buildRevsEd();buildGalGrid();buildHoursEd();
+  // char counters
+  document.getElementById('a-stitle').addEventListener('input',()=>document.getElementById('a-stc').textContent=gv('a-stitle').length+' / 60');
+  document.getElementById('a-sdesc').addEventListener('input',()=>document.getElementById('a-sdc').textContent=gv('a-sdesc').length+' / 155');
+  const ls=localStorage.getItem('cms_v2_saved');
+  if(ls)document.getElementById('a-lastsaved').textContent='Saved '+ls;
+}
+
+function showPrev(id,src){const i=document.getElementById(id);if(i&&src){i.src=src;i.style.display='block';}}
+function esc(s){return s==null?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ── REPEATER BUILDERS ─────────────────────────────────────────────
+function buildTrustEd(){
+  const c=document.getElementById('a-trust-ed');c.innerHTML='';
+  (D.trust||DEF.trust).forEach((t,i)=>{c.innerHTML+=`<div class="ri"><button class="rdel" onclick="D.trust.splice(${i},1);buildTrustEd()">×</button><div class="ag2"><div class="af"><label>Icon (emoji)</label><input type="text" value="${esc(t.ico)}" oninput="D.trust[${i}].ico=this.value" style="font-size:18px;text-align:center"></div><div class="af"><label>Text</label><input type="text" value="${esc(t.txt)}" oninput="D.trust[${i}].txt=this.value"></div></div></div>`;});
+}
+function addTrust(){D.trust=D.trust||[];D.trust.push({ico:'✅',txt:'New Item'});buildTrustEd();}
+
+function buildSvcsEd(){
+  const c=document.getElementById('a-svcs-ed');c.innerHTML='';
+  (D.svcs||DEF.svcs).forEach((s,i)=>{c.innerHTML+=`<div class="ri"><button class="rdel" onclick="D.svcs.splice(${i},1);buildSvcsEd();document.getElementById('a-svccount').textContent=D.svcs.length">×</button><div class="ag2"><div class="af"><label>Icon</label><input type="text" value="${esc(s.ico)}" oninput="D.svcs[${i}].ico=this.value" style="font-size:20px;text-align:center"></div><div class="af"><label>Price</label><input type="text" value="${esc(s.price)}" oninput="D.svcs[${i}].price=this.value"></div></div><div class="af"><label>Title</label><input type="text" value="${esc(s.title)}" oninput="D.svcs[${i}].title=this.value"></div><div class="af"><label>Description</label><textarea oninput="D.svcs[${i}].desc=this.value">${esc(s.desc)}</textarea></div></div>`;});
+}
+function addService(){D.svcs=D.svcs||[];D.svcs.push({ico:'🦷',title:'New Service',desc:'Description.',price:'From ₹500'});buildSvcsEd();}
+
+function buildWhyEd(){
+  const c=document.getElementById('a-why-ed');c.innerHTML='';
+  (D.why||DEF.why).forEach((w,i)=>{c.innerHTML+=`<div class="ri"><button class="rdel" onclick="D.why.splice(${i},1);buildWhyEd()">×</button><div class="af"><label>Title</label><input type="text" value="${esc(w.title)}" oninput="D.why[${i}].title=this.value"></div><div class="af"><label>Description</label><textarea oninput="D.why[${i}].desc=this.value">${esc(w.desc)}</textarea></div></div>`;});
+}
+function addWhy(){D.why=D.why||[];D.why.push({title:'New Point',desc:'Description.'});buildWhyEd();}
+
+function buildRevsEd(){
+  const c=document.getElementById('a-revs-ed');c.innerHTML='';
+  (D.revs||DEF.revs).forEach((r,i)=>{c.innerHTML+=`<div class="ri"><button class="rdel" onclick="D.revs.splice(${i},1);buildRevsEd();document.getElementById('a-revcount').textContent=D.revs.length">×</button><div class="ag2"><div class="af"><label>Patient Name</label><input type="text" value="${esc(r.name)}" oninput="D.revs[${i}].name=this.value"></div><div class="af"><label>Initials (2 letters)</label><input type="text" value="${esc(r.init)}" oninput="D.revs[${i}].init=this.value" maxlength="2" style="text-transform:uppercase"></div></div><div class="ag2"><div class="af"><label>Location</label><input type="text" value="${esc(r.loc)}" oninput="D.revs[${i}].loc=this.value"></div><div class="af"><label>Stars (1-5)</label><input type="number" min="1" max="5" value="${r.stars}" oninput="D.revs[${i}].stars=parseInt(this.value)"></div></div><div class="af"><label>Review Text</label><textarea oninput="D.revs[${i}].txt=this.value">${esc(r.txt)}</textarea></div></div>`;});
+}
+function addReview(){D.revs=D.revs||[];D.revs.push({stars:5,txt:'"Great experience!"',name:'New Patient',loc:'Amritsar',init:'NP'});buildRevsEd();document.getElementById('a-revcount').textContent=D.revs.length;}
+
+function buildGalGrid(){
+  const g=document.getElementById('a-gal-grid');g.innerHTML='';
+  (D.gal||[]).forEach((src,i)=>{const d=document.createElement('div');d.style.cssText='position:relative;border-radius:7px;overflow:hidden;aspect-ratio:1;background:#f1f1f1';d.innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block"><button onclick="D.gal.splice(${i},1);buildGalGrid();document.getElementById('a-galcount').textContent=D.gal.length" style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:4px;width:22px;height:22px;cursor:pointer;font-size:13px">×</button>`;g.appendChild(d);});
+  document.getElementById('a-galcount').textContent=D.gal.length;
+}
+
+function buildHoursEd(){
+  const c=document.getElementById('a-hours-ed');
+  c.innerHTML='<div class="hr-row" style="padding-top:0;padding-bottom:8px"><div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em">Day</div><div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em">Open</div><div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em">Close</div><div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em">Closed?</div></div>';
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(day=>{
+    const info=(D.hours||DEF.hours)[day]||{o:'09:00',c:'18:00',cl:false};
+    const row=document.createElement('div');row.className='hr-row';
+    row.innerHTML=`<div class="dl">${day}</div><input type="time" value="${info.o}" id="ho-${day}" onchange="(D.hours=D.hours||{})[('${day}')]=D.hours['${day}']||{};D.hours['${day}'].o=this.value" ${info.cl?'disabled':''}><input type="time" value="${info.c}" id="hc-${day}" onchange="(D.hours=D.hours||{})['${day}']=D.hours['${day}']||{};D.hours['${day}'].c=this.value" ${info.cl?'disabled':''}><label class="ctog"><input type="checkbox" ${info.cl?'checked':''} onchange="(D.hours=D.hours||{})['${day}']=D.hours['${day}']||{};D.hours['${day}'].cl=this.checked;document.getElementById('ho-${day}').disabled=this.checked;document.getElementById('hc-${day}').disabled=this.checked"> Closed</label>`;
+    c.appendChild(row);
+  });
+}
+
+// ── IMAGE UPLOAD ──────────────────────────────────────────────────
+function uploadImg(input,prevId,key){
+  const file=input.files[0];if(!file)return;
+  if(file.size>4*1024*1024){showToast('Image too large — max 4MB','err');return;}
+  const r=new FileReader();r.onload=e=>{D.imgs=D.imgs||{};D.imgs[key]=e.target.result;showPrev(prevId,e.target.result);showToast('Photo uploaded — click Save & Publish','ok');};r.readAsDataURL(file);
+}
+function uploadGallery(input){
+  Array.from(input.files).forEach(file=>{if(file.size>4*1024*1024){showToast('One image over 4MB — skipped','err');return;}const r=new FileReader();r.onload=e=>{D.gal=D.gal||[];D.gal.push(e.target.result);buildGalGrid();};r.readAsDataURL(file);});
+}
+
+// ── COLLECT & SAVE ────────────────────────────────────────────────
+function collectAdmin(){
+  D.ident={name:gv('a-name'),doc:gv('a-doc'),tagline:gv('a-tagline'),wa:gv('a-wa')};
+  D.hero={h1a:gv('a-h1a'),hl:gv('a-hl'),h1b:gv('a-h1b'),sub:gv('a-sub'),s1n:gv('a-s1n'),s1l:gv('a-s1l'),s2n:gv('a-s2n'),s2l:gv('a-s2l'),s3n:gv('a-s3n'),s3l:gv('a-s3l')};
+  D.about={tag:gv('a-atag'),heading:gv('a-ah')};
+  D.contact={phone:gv('a-phone'),email:gv('a-email'),addr:gv('a-addr'),maps:gv('a-maps')};
+  D.seo={title:gv('a-stitle'),desc:gv('a-sdesc'),kw:gv('a-skw')};
+  D.theme={pri:document.getElementById('c-pri').value,acc:document.getElementById('c-acc').value,ink:document.getElementById('c-ink').value,bg:document.getElementById('c-bg').value,fh:gv('a-fh'),fb:gv('a-fb')};
+}
+function saveAll(){
+  collectAdmin();
+  try{
+    localStorage.setItem('cms_v2',JSON.stringify(D));
+    const ts=new Date().toLocaleString('en-IN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'short'});
+    localStorage.setItem('cms_v2_saved',ts);
+    document.getElementById('a-lastsaved').textContent='Saved '+ts;
+    document.getElementById('a-sname').textContent=D.ident.name||'Dr. Kapoor Dental';
+    showToast('✓ Saved & Published!','ok');
+  }catch(e){showToast('Error — storage may be full','err');}
+}
+function saveCreds(){
+  const u=gv('s-user'),p=gv('s-pass');if(!u||!p){showToast('Fill both fields','err');return;}
+  D.creds={user:u,pass:p};localStorage.setItem('cms_v2_creds',JSON.stringify(D.creds));
+  showToast('Credentials updated','ok');
+}
+function exportData(){collectAdmin();const b=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='cms-backup.json';a.click();showToast('Backup exported','ok');}
+function handleImport(input){const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{D=JSON.parse(e.target.result);localStorage.setItem('cms_v2',JSON.stringify(D));populateAdmin();showToast('Data imported','ok');}catch(ex){showToast('Invalid JSON','err');}};r.readAsText(f);}
+function resetData(){if(!confirm('Reset all to defaults?'))return;D=JSON.parse(JSON.stringify(DEF));localStorage.removeItem('cms_v2');populateAdmin();showToast('Reset to defaults','ok');}
+
+// ── TOAST ─────────────────────────────────────────────────────────
+let _tt;
+function showToast(msg,type='ok'){
+  const t=document.getElementById('admin-toast');
+  t.textContent=msg;t.className=`${type}`;t.classList.add('show');
+  clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ── BOOT ──────────────────────────────────────────────────────────
+route();
+</script>
+</body>
+</html>
