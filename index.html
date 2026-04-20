@@ -34,8 +34,22 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07)}
 .nlinks a:hover{color:var(--sage)}
 .ncta{padding:9px 20px;background:var(--sage);color:#fff;border-radius:40px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;white-space:nowrap}
 .ncta:hover{background:var(--sage-d);transform:translateY(-1px)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.hamburger span{width:22px;height:1.5px;background:var(--ink);display:block}
+/* Mobile menu - slide in from right, half screen */
+.mobile-menu{position:fixed;top:0;right:-100%;width:min(320px,80vw);height:100vh;background:#fff;z-index:250;padding:80px 28px 28px;display:flex;flex-direction:column;gap:8px;box-shadow:-8px 0 40px rgba(0,0,0,.12);transition:right .3s cubic-bezier(.4,0,.2,1)}
+.mobile-menu.open{right:0}
+.mobile-menu a{font-size:18px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--ink);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(74,124,111,.1);transition:color .2s}
+.mobile-menu a:hover{color:var(--sage)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu .mm-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(74,124,111,.2);background:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mid);transition:all .2s}
+.mobile-menu .mm-close:hover{background:rgba(74,124,111,.08)}
+.mm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:249;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px)}
+.mm-overlay.open{opacity:1;pointer-events:all}
+.mm-cta{margin-top:16px;padding:13px 20px;background:var(--sage);color:#fff;border-radius:40px;font-size:14px;font-weight:600;text-align:center;text-decoration:none;font-family:'DM Sans',sans-serif;border-bottom:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{width:22px;height:1.5px;background:var(--ink);display:block;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:110px 5% 70px;gap:60px;position:relative;overflow:hidden;background:var(--ivory)}
@@ -201,10 +215,9 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07)}
 .succ{display:none;text-align:center;padding:12px;background:rgba(74,124,111,.3);border-radius:9px;color:rgba(255,255,255,.9);font-size:13px;margin-top:10px}
 
 /* ── MAP ── */
-.mapsec iframe{display:block;width:100%;height:340px;border:none}
-
-/* ── FOOTER ── */
-footer{background:var(--ink);padding:36px 5%;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
+.mapsec{display:block;line-height:0}
+.mapsec iframe{display:block;width:100%;height:340px;border:none;margin-bottom:0}
+footer{background:var(--ink);padding:36px 5%;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-top:0}
 .flogo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#fff}
 footer p{font-size:12px;text-align:center;line-height:1.6}
 .flinks{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}
@@ -216,8 +229,10 @@ footer p{font-size:12px;text-align:center;line-height:1.6}
 .swa-btn:hover{transform:scale(1.1)}
 .swa-btn svg{width:28px;height:28px;fill:#fff}
 @keyframes wap{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.8)}}
-.admin-badge{position:fixed;bottom:26px;left:26px;background:rgba(15,25,35,.75);color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1);border-radius:40px;padding:8px 14px;font-size:11px;text-decoration:none;backdrop-filter:blur(8px);z-index:300;transition:all .2s}
-.admin-badge:hover{color:#fff}
+.admin-badge{position:fixed;bottom:26px;left:26px;width:44px;height:44px;background:#fff;border:1.5px solid #d1d5db;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:300;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer}
+.admin-badge:hover{border-color:#9ca3af;box-shadow:0 4px 20px rgba(0,0,0,.14);transform:scale(1.08) rotate(30deg)}
+.admin-badge svg{width:22px;height:22px;fill:#9ca3af;transition:fill .2s}
+.admin-badge:hover svg{fill:#6b7280}
 
 /* ── SCROLL ANIM ── */
 .fu{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
@@ -252,83 +267,154 @@ footer p{font-size:12px;text-align:center;line-height:1.6}
   .modal-footer{padding:14px 20px 20px}
 }
 
-/* ══════════════════════════
-   ADMIN PANEL
-══════════════════════════ */
-#admin-panel{display:none}
-#admin-panel *{box-sizing:border-box;margin:0;padding:0}
-#login-screen{position:fixed;inset:0;background:#0f1923;display:flex;align-items:center;justify-content:center;z-index:9999}
-.lbox{background:#1a2636;border:1px solid rgba(74,124,111,.3);border-radius:16px;padding:40px 34px;width:350px;text-align:center}
-.lbox .lmark{width:50px;height:50px;background:#4a7c6f;border-radius:11px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:22px}
-.lbox h1{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:4px}
-.lbox .lsub{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:26px}
-.lf{margin-bottom:12px;text-align:left}
-.lf label{display:block;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
-.lf input{width:100%;padding:10px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;color:#fff;font-size:13px;font-family:'Inter',sans-serif;outline:none}
-.lf input:focus{border-color:#4a7c6f}
-.lf input::placeholder{color:rgba(255,255,255,.2)}
-.lbtn{width:100%;padding:11px;background:#4a7c6f;color:#fff;border:none;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:5px}
-.lbtn:hover{background:#2d5248}
-.lerr{color:#fc8181;font-size:12px;margin-top:8px;display:none}
-.admin-ui{min-height:100vh;background:#f4f5f7;display:flex;flex-direction:column;font-family:'Inter',sans-serif}
-.abar{background:#0f1923;display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:100}
-.abar-brand{padding:12px 16px;border-right:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:9px;flex-shrink:0}
-.ab-logo{width:28px;height:28px;background:#4a7c6f;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px}
-.ab-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:#fff;white-space:nowrap}
-.ab-tag{font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em}
+/* ═══════════════════════════════════════════════════════════
+   ADMIN PANEL — SAME PALETTE & LANGUAGE AS THE WEBSITE
+   Colors: sage #4a7c6f | gold #c9a84c | ivory #faf8f4
+   Fonts: Cormorant Garamond (display) | DM Sans (body)
+═══════════════════════════════════════════════════════════ */
+
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:rgba(250,248,244,.97);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;z-index:9999}
+.login-glow{display:none}
+.lbox{background:#ffffff;border:1px solid rgba(74,124,111,.16);border-radius:24px;padding:48px 40px;width:400px;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.09),0 2px 8px rgba(0,0,0,.04);position:relative}
+.lbox-crown{width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(135deg,#4a7c6f,#2d5248);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 24px rgba(74,124,111,.3)}
+.lbox h1{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--ink);margin-bottom:4px;letter-spacing:-.01em}
+.lbox .lsub{font-size:12px;color:var(--hint);margin-bottom:32px;letter-spacing:.04em;text-transform:uppercase}
+.lf{margin-bottom:16px;text-align:left}
+.lf label{display:block;font-size:10px;font-weight:600;color:var(--mid);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-family:'DM Sans',sans-serif}
+.lf input{width:100%;padding:13px 16px;background:#fafafa;border:1.5px solid rgba(74,124,111,.15);border-radius:10px;color:var(--ink);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:all .25s}
+.lf input:focus{border-color:#4a7c6f;background:#fff;box-shadow:0 0 0 3px rgba(74,124,111,.1)}
+.lf input::placeholder{color:var(--hint)}
+.lbtn{width:100%;padding:14px;background:var(--gold);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;transition:all .25s;letter-spacing:.02em;box-shadow:0 4px 16px rgba(201,168,76,.35)}
+.lbtn:hover{background:#a8893a;transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.4)}
+.lerr{color:#dc2626;font-size:12px;margin-top:10px;display:none;font-family:'DM Sans',sans-serif;background:rgba(220,38,38,.06);padding:8px 12px;border-radius:7px;border:1px solid rgba(220,38,38,.15)}
+
+/* ADMIN SHELL */
+.admin-ui{min-height:100vh;background:var(--ivory);display:flex;flex-direction:column;font-family:'DM Sans',sans-serif}
+
+/* TOP BAR */
+.abar{background:var(--sage-d);display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.15)}
+.abar::-webkit-scrollbar{height:0}
+.abar-brand{padding:14px 20px;border-right:1px solid rgba(250,248,244,.08);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ab-logo{width:34px;height:34px;background:linear-gradient(135deg,var(--sage-l),var(--sage));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.ab-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--ivory);white-space:nowrap;letter-spacing:-.01em}
+.ab-tag{font-size:10px;color:rgba(250,248,244,.35);text-transform:uppercase;letter-spacing:.08em;font-family:'DM Sans',sans-serif}
 .abar-nav{display:flex;align-items:center;flex:1}
-.abar-item{padding:13px 12px;font-size:11px;color:rgba(255,255,255,.45);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s;font-family:'Inter',sans-serif;background:none;border-top:none;border-left:none;border-right:none}
-.abar-item:hover{color:rgba(255,255,255,.8)}
-.abar-item.active{color:#fff;border-bottom-color:#4a7c6f}
-.abar-right{padding:8px 12px;display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:auto}
-.save-btn{padding:7px 16px;background:#4a7c6f;color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
-.save-btn:hover{background:#2d5248}
-.prev-link{padding:7px 11px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);border-radius:6px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;white-space:nowrap}
-.logout-btn{padding:7px 11px;background:rgba(229,62,62,.1);color:#e53e3e;border:1px solid rgba(229,62,62,.25);border-radius:6px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif}
-.acontent{padding:22px 5%;flex:1}
-.acard{background:#fff;border:1px solid #e2e4e8;border-radius:10px;padding:20px;margin-bottom:16px}
-.acard h3{font-size:13px;font-weight:600;color:#1a202c;margin-bottom:4px}
-.acard .adesc{font-size:11px;color:#6b7280;margin-bottom:16px;line-height:1.5}
-.af{margin-bottom:12px}
-.af label{display:block;font-size:10px;font-weight:600;color:#6b7280;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
-.af input,.af select,.af textarea{width:100%;padding:8px 10px;border:1px solid #e2e4e8;border-radius:6px;font-size:12px;font-family:'Inter',sans-serif;color:#1a202c;background:#fff;outline:none;transition:border .2s}
-.af input:focus,.af select:focus,.af textarea:focus{border-color:#4a7c6f;box-shadow:0 0 0 3px rgba(74,124,111,.1)}
-.af textarea{min-height:66px;resize:vertical;line-height:1.5}
-.af .ahint{font-size:10px;color:#9ca3af;margin-top:3px}
-.ag2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ag3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
-.ri{background:#f9fafb;border:1px solid #e2e4e8;border-radius:8px;padding:12px;margin-bottom:9px;position:relative}
-.ri .rdel{position:absolute;top:9px;right:9px;width:24px;height:24px;background:#fee2e2;border:none;border-radius:4px;color:#e53e3e;font-size:14px;cursor:pointer}
-.ri .rdel:hover{background:#e53e3e;color:#fff}
-.add-btn{display:flex;align-items:center;gap:4px;padding:7px 12px;border:1px dashed #4a7c6f;border-radius:6px;background:transparent;color:#4a7c6f;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px}
-.iup{border:2px dashed #e2e4e8;border-radius:8px;padding:20px;text-align:center;cursor:pointer;position:relative;transition:all .2s}
-.iup:hover{border-color:#4a7c6f;background:rgba(74,124,111,.03)}
+.abar-item{padding:14px 14px;font-size:11px;font-weight:500;color:rgba(250,248,244,.45);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;font-family:'DM Sans',sans-serif;background:none;border-top:none;border-left:none;border-right:none;letter-spacing:.02em}
+.abar-item:hover{color:rgba(250,248,244,.85)}
+.abar-item.active{color:var(--ivory);border-bottom-color:var(--gold)}
+.abar-right{padding:10px 16px;display:flex;gap:8px;align-items:center;flex-shrink:0;margin-left:auto}
+.a-lastsaved-wrap{font-size:10px;color:rgba(250,248,244,.3);font-family:'DM Sans',sans-serif;white-space:nowrap}
+.save-btn{padding:9px 18px;background:linear-gradient(135deg,var(--gold),#a8893a);color:var(--ink);border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;letter-spacing:.02em;transition:all .2s;box-shadow:0 2px 8px rgba(201,168,76,.3)}
+.save-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,168,76,.4)}
+.prev-link{padding:9px 13px;background:rgba(250,248,244,.08);color:rgba(250,248,244,.7);border:1px solid rgba(250,248,244,.12);border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;transition:all .2s}
+.prev-link:hover{color:var(--ivory);background:rgba(250,248,244,.14)}
+.logout-btn{padding:9px 13px;background:rgba(255,100,100,.1);color:rgba(255,150,150,.8);border:1px solid rgba(255,100,100,.2);border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.logout-btn:hover{background:rgba(255,100,100,.2)}
+
+/* CONTENT AREA */
+.acontent{padding:28px 5%;flex:1}
+
+/* SECTION DIVIDER */
+.asec-label{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:var(--sage);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;margin-top:4px;display:flex;align-items:center;gap:10px}
+.asec-label::after{content:'';flex:1;height:1px;background:rgba(74,124,111,.15)}
+
+/* STAT CARDS */
+.astats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.asb{background:#fff;border:1px solid rgba(74,124,111,.12);border-radius:14px;padding:18px;position:relative;overflow:hidden}
+.asb::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sage),var(--gold))}
+.asb .av{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--sage-d);line-height:1;margin-bottom:4px}
+.asb .al{font-size:11px;color:var(--hint);text-transform:uppercase;letter-spacing:.07em}
+.asb .a-ico{position:absolute;bottom:12px;right:14px;font-size:28px;opacity:.12}
+
+/* CARDS */
+.acard{background:#fff;border:1px solid rgba(74,124,111,.1);border-radius:16px;padding:24px;margin-bottom:18px;position:relative}
+.acard-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.acard h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.acard .adesc{font-size:13px;color:var(--mid);line-height:1.6;margin-top:3px}
+.acard-badge{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;background:rgba(74,124,111,.1);color:var(--sage);font-family:'DM Sans',sans-serif}
+
+/* FORM FIELDS */
+.af{margin-bottom:14px}
+.af label{display:block;font-size:11px;font-weight:600;color:var(--mid);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.af input,.af select,.af textarea{width:100%;padding:10px 14px;border:1.5px solid rgba(74,124,111,.15);border-radius:10px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fafafa;outline:none;transition:all .2s}
+.af input:focus,.af select:focus,.af textarea:focus{border-color:var(--sage);background:#fff;box-shadow:0 0 0 3px rgba(74,124,111,.08)}
+.af textarea{min-height:72px;resize:vertical;line-height:1.6}
+.af .ahint{font-size:11px;color:var(--hint);margin-top:4px;line-height:1.5}
+.ag2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ag3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+
+/* REPEATER ITEMS */
+.ri{background:var(--ivory);border:1.5px solid rgba(74,124,111,.12);border-radius:12px;padding:16px;margin-bottom:10px;position:relative;transition:border-color .2s}
+.ri:hover{border-color:rgba(74,124,111,.25)}
+.ri .rdel{position:absolute;top:12px;right:12px;width:28px;height:28px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.15);border-radius:7px;color:#dc2626;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.ri .rdel:hover{background:#dc2626;color:#fff;border-color:#dc2626}
+.add-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 16px;border:1.5px dashed rgba(74,124,111,.35);border-radius:10px;background:rgba(74,124,111,.03);color:var(--sage);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px;transition:all .2s}
+.add-btn:hover{background:rgba(74,124,111,.08);border-color:var(--sage)}
+
+/* IMAGE UPLOAD */
+.iup{border:2px dashed rgba(74,124,111,.2);border-radius:14px;padding:28px 20px;text-align:center;cursor:pointer;position:relative;transition:all .25s;background:rgba(74,124,111,.02)}
+.iup:hover{border-color:var(--sage);background:rgba(74,124,111,.05)}
 .iup input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.iup .iico{font-size:24px;margin-bottom:6px}
-.iup p{font-size:11px;color:#6b7280}
-.iup strong{color:#4a7c6f}
-.iprev{width:100%;max-height:140px;object-fit:cover;border-radius:6px;margin-top:9px;display:none}
-.crow{display:flex;align-items:center;gap:9px;margin-bottom:9px;padding:8px 11px;background:#f9fafb;border-radius:6px}
-.crow label{flex:1;font-size:12px;font-weight:500;color:#1a202c}
-.crow input[type=color]{width:32px;height:26px;border:1px solid #e2e4e8;border-radius:4px;cursor:pointer;padding:2px}
-.crow .chex{font-size:10px;color:#9ca3af;font-family:monospace;width:58px}
-.astats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.asb{background:#fff;border:1px solid #e2e4e8;border-radius:8px;padding:12px}
-.asb .av{font-size:22px;font-weight:700;color:#1a202c}
-.asb .al{font-size:10px;color:#6b7280;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
-.apanel{display:none}.apanel.active{display:block}
-.n-ok{padding:10px 13px;border-radius:6px;font-size:11px;margin-bottom:13px;background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}
-.n-info{padding:10px 13px;border-radius:6px;font-size:11px;margin-bottom:13px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
-#admin-toast{position:fixed;bottom:18px;right:18px;background:#1a202c;color:#fff;padding:9px 16px;border-radius:8px;font-size:12px;font-weight:500;z-index:9999;box-shadow:0 4px 18px rgba(0,0,0,.2);transform:translateY(14px);opacity:0;transition:all .3s;pointer-events:none}
-#admin-toast.show{transform:translateY(0);opacity:1}
-#admin-toast.ok{border-left:3px solid #38a169}
-#admin-toast.err{border-left:3px solid #e53e3e}
-.hr-row{display:grid;grid-template-columns:110px 1fr 1fr auto;gap:7px;align-items:center;padding:6px 0;border-bottom:1px solid #f3f4f6}
+.iup .iico{font-size:32px;margin-bottom:8px;opacity:.6}
+.iup .iup-title{font-size:14px;font-weight:600;color:var(--sage);margin-bottom:3px}
+.iup .iup-sub{font-size:12px;color:var(--hint)}
+.iprev{width:100%;max-height:160px;object-fit:cover;border-radius:10px;margin-top:12px;display:none;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+
+/* COLOR ROW */
+.crow{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:10px 14px;background:var(--ivory);border:1px solid rgba(74,124,111,.1);border-radius:10px;transition:all .2s}
+.crow:hover{border-color:rgba(74,124,111,.25)}
+.crow label{flex:1;font-size:13px;font-weight:500;color:var(--ink)}
+.crow input[type=color]{width:38px;height:32px;border:1.5px solid rgba(74,124,111,.2);border-radius:7px;cursor:pointer;padding:2px}
+.crow .chex{font-size:12px;color:var(--mid);font-family:monospace;width:66px;background:#f0ede8;border-radius:5px;padding:3px 6px;text-align:center}
+
+/* NOTICE BOXES */
+.n-ok{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:16px;background:rgba(74,124,111,.08);border:1px solid rgba(74,124,111,.2);color:var(--sage-d);line-height:1.5}
+.n-info{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:16px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);color:#7a5c1e;line-height:1.5}
+.n-warn{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:16px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.15);color:#991b1b;line-height:1.5}
+
+/* HOURS TABLE */
+.hr-row{display:grid;grid-template-columns:110px 1fr 1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(74,124,111,.08)}
 .hr-row:last-child{border:none}
-.hr-row .dl{font-size:12px;font-weight:500;color:#1a202c}
-.hr-row input[type=time]{padding:5px 8px;border:1px solid #e2e4e8;border-radius:5px;font-size:12px;font-family:'Inter',sans-serif;outline:none;color:#1a202c}
-.ctog{display:flex;align-items:center;gap:4px;font-size:11px;color:#6b7280;cursor:pointer}
-@media(max-width:700px){.ag2,.ag3,.astats{grid-template-columns:1fr}}
+.hr-row .dl{font-size:13px;font-weight:600;color:var(--ink)}
+.hr-row input[type=time]{padding:7px 10px;border:1.5px solid rgba(74,124,111,.15);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;color:var(--ink);background:#fafafa}
+.hr-row input[type=time]:focus{border-color:var(--sage)}
+.ctog{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mid);cursor:pointer;font-family:'DM Sans',sans-serif}
+.ctog input{accent-color:#dc2626}
+
+/* PANELS */
+.apanel{display:none}.apanel.active{display:block;animation:fadeInUp .25s ease}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* TOAST */
+#admin-toast{position:fixed;bottom:22px;right:22px;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:500;z-index:9999;display:flex;align-items:center;gap:8px;box-shadow:0 8px 28px rgba(0,0,0,.15);transform:translateY(16px);opacity:0;transition:all .3s;pointer-events:none;font-family:'DM Sans',sans-serif;backdrop-filter:blur(8px)}
+#admin-toast.show{transform:translateY(0);opacity:1}
+#admin-toast.ok{background:linear-gradient(135deg,var(--sage-d),#1a3d30);color:var(--ivory);border:1px solid rgba(74,124,111,.3)}
+#admin-toast.err{background:linear-gradient(135deg,#7f1d1d,#991b1b);color:#fff;border:1px solid rgba(220,38,38,.3)}
+
+/* QUICK-LINK BUTTONS */
+.quick-link-btn{text-align:left;padding:12px 16px;background:var(--ivory);border:1.5px solid rgba(74,124,111,.12);border-radius:10px;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;display:flex;justify-content:space-between;align-items:center;color:var(--ink);transition:all .2s;width:100%;margin-bottom:8px}
+.quick-link-btn:hover{border-color:var(--sage);background:rgba(74,124,111,.04);transform:translateX(2px)}
+.quick-link-btn .ql-icon{font-size:16px}
+.quick-link-btn .ql-arr{color:var(--sage);font-weight:700}
+
+/* DATA BUTTONS */
+.data-btn{padding:9px 14px;background:var(--ivory);border:1.5px solid rgba(74,124,111,.15);border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--ink);transition:all .2s}
+.data-btn:hover{border-color:var(--sage);background:rgba(74,124,111,.04)}
+.data-btn.danger{border-color:rgba(220,38,38,.2);color:#dc2626;background:rgba(220,38,38,.03)}
+.data-btn.danger:hover{background:rgba(220,38,38,.08)}
+
+/* SERVICE EDIT CARD */
+.svc-edit-card{background:var(--ivory);border:1.5px solid rgba(74,124,111,.12);border-radius:12px;padding:16px;margin-bottom:10px;position:relative}
+.svc-edit-card:hover{border-color:rgba(74,124,111,.3)}
+.svc-edit-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(74,124,111,.1)}
+.svc-edit-ico{width:40px;height:40px;border-radius:10px;background:rgba(74,124,111,.1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.svc-edit-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--ink)}
+.svc-edit-price-tag{font-size:11px;color:var(--sage);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+
+/* MOBILE */
+@media(max-width:700px){.ag2,.ag3,.astats{grid-template-columns:1fr}.hr-row{grid-template-columns:1fr 1fr;gap:6px}.abar-right .a-lastsaved-wrap{display:none}}
+
 </style>
 </head>
 <body>
@@ -340,7 +426,9 @@ footer p{font-size:12px;text-align:center;line-height:1.6}
 <a id="swa" href="https://wa.me/919814567890" class="swa-btn" target="_blank" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.533 5.862L.057 23.428a.75.75 0 00.915.915l5.566-1.476A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 01-4.962-1.357l-.355-.213-3.683.976.977-3.581-.232-.369A9.725 9.725 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
 </a>
-<a href="#" onclick="showAdmin();return false;" class="admin-badge">⚙ Admin</a>
+<a href="#" onclick="showAdmin();return false;" class="admin-badge" title="Admin Panel">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+</a>
 
 <!-- NAV -->
 <nav id="main-nav">
@@ -354,9 +442,20 @@ footer p{font-size:12px;text-align:center;line-height:1.6}
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a id="s-phone" href="tel:+919814567890" class="ncta">📞 Book Now</a>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <a id="s-phone" href="tel:+919814567890" class="ncta" onclick="window.location.href=this.href;return false;">📞 Book Now</a>
+  <button class="hamburger" onclick="openMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mm-overlay" id="mm-overlay" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mm-close" onclick="closeMenu()">✕</button>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#about" onclick="closeMenu()">About Us</a>
+  <a href="#reviews" onclick="closeMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a id="mm-phone" href="tel:+919814567890" class="mm-cta">📞 Book Appointment</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -521,22 +620,30 @@ footer p{font-size:12px;text-align:center;line-height:1.6}
 </div>
 
 <!-- ════════════════════ ADMIN PANEL ════════════════════ -->
-<div id="admin-panel">
+<div id="admin-panel" style="display:none">
+
+<!-- LOGIN -->
 <div id="login-screen">
+  <div class="login-glow"></div>
   <div class="lbox">
-    <div class="lmark">⚙</div>
+    <div class="lbox-crown">🦷</div>
     <h1>Admin Panel</h1>
-    <div class="lsub">Dr. Atul Kapoor Dental — CMS</div>
-    <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="admin" autocomplete="username"></div>
-    <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <button class="lbtn" onclick="doLogin()">Sign In →</button>
-    <div class="lerr" id="lerr">Incorrect credentials</div>
-    <p style="margin-top:14px;font-size:10px;color:rgba(255,255,255,.2)">Default: admin / clinic2025</p>
+    <div class="lsub">Dr. Atul Kapoor Dental · CMS</div>
+    <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="Enter username" autocomplete="username"></div>
+    <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="Enter password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="lbtn" onclick="doLogin()">Access Dashboard →</button>
+    <div class="lerr" id="lerr">⚠ Incorrect credentials. Please try again.</div>
   </div>
 </div>
+
+<!-- ADMIN UI -->
 <div class="admin-ui" id="admin-ui" style="display:none">
+  <!-- TOP BAR -->
   <div class="abar">
-    <div class="abar-brand"><div class="ab-logo">🦷</div><div><div class="ab-name" id="a-sname">Dr. Atul Kapoor</div><div class="ab-tag">CMS Admin</div></div></div>
+    <div class="abar-brand">
+      <div class="ab-logo">🦷</div>
+      <div><div class="ab-name" id="a-sname">Dr. Atul Kapoor</div><div class="ab-tag">Content Management</div></div>
+    </div>
     <div class="abar-nav">
       <button class="abar-item active" data-panel="dash" onclick="switchAdmin(this)">Dashboard</button>
       <button class="abar-item" data-panel="ident" onclick="switchAdmin(this)">Branding</button>
@@ -551,149 +658,241 @@ footer p{font-size:12px;text-align:center;line-height:1.6}
       <button class="abar-item" data-panel="aset" onclick="switchAdmin(this)">Settings</button>
     </div>
     <div class="abar-right">
-      <span style="font-size:10px;color:rgba(255,255,255,.3)" id="a-lastsaved">Not saved</span>
+      <div class="a-lastsaved-wrap" id="a-lastsaved">Never saved</div>
       <a href="#" onclick="hideAdmin();return false;" class="prev-link">↗ View Site</a>
       <button class="save-btn" onclick="saveAll()">💾 Save & Publish</button>
       <button class="logout-btn" onclick="doLogout()">Sign Out</button>
     </div>
   </div>
+
+  <!-- CONTENT -->
   <div class="acontent">
+
+    <!-- DASHBOARD -->
     <div class="apanel active" id="apanel-dash">
-      <div class="n-ok">✓ Admin active. Edit any section above → Save & Publish to go live.</div>
+      <div class="asec-label">Overview</div>
+      <div class="n-ok">✓ &nbsp;You are managing <strong>Dr. Atul Kapoor Dental Clinic</strong>. All changes save to your browser and publish to the live site instantly when you click <strong>Save & Publish</strong>.</div>
       <div class="astats">
-        <div class="asb"><div class="av" style="color:#4a7c6f" id="a-svccount">8</div><div class="al">Services</div></div>
-        <div class="asb"><div class="av" style="color:#38a169" id="a-revcount">5</div><div class="al">Reviews</div></div>
-        <div class="asb"><div class="av" style="color:#d97706" id="a-galcount">0</div><div class="al">Photos</div></div>
-        <div class="asb"><div class="av"><span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:99px;font-size:11px">Live</span></div><div class="al">Status</div></div>
+        <div class="asb"><div class="av" id="a-svccount">8</div><div class="al">Services Listed</div><div class="a-ico">🦷</div></div>
+        <div class="asb"><div class="av" id="a-revcount">7</div><div class="al">Patient Reviews</div><div class="a-ico">⭐</div></div>
+        <div class="asb"><div class="av" id="a-galcount">0</div><div class="al">Gallery Photos</div><div class="a-ico">📷</div></div>
+        <div class="asb"><div class="av" style="font-size:16px;margin-top:6px"><span style="background:rgba(74,124,111,.12);color:var(--sage-d);padding:5px 14px;border-radius:99px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600">● Live</span></div><div class="al">Website Status</div><div class="a-ico">🚀</div></div>
       </div>
-      <div class="ag2">
-        <div class="acard"><h3>Quick Edit</h3><p class="adesc">Jump to sections</p>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <button onclick="switchAdminKey('ident')" style="text-align:left;padding:8px 11px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;display:flex;justify-content:space-between">Logo & Name <span>→</span></button>
-            <button onclick="switchAdminKey('ahero')" style="text-align:left;padding:8px 11px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;display:flex;justify-content:space-between">Hero & Photo <span>→</span></button>
-            <button onclick="switchAdminKey('asvcs')" style="text-align:left;padding:8px 11px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;display:flex;justify-content:space-between">Services & Pricing <span>→</span></button>
-            <button onclick="switchAdminKey('arevs')" style="text-align:left;padding:8px 11px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;display:flex;justify-content:space-between">Patient Reviews <span>→</span></button>
-            <button onclick="switchAdminKey('acon')" style="text-align:left;padding:8px 11px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;display:flex;justify-content:space-between">Contact & Hours <span>→</span></button>
+
+      <div class="ag2" style="margin-bottom:18px">
+        <div class="acard">
+          <div class="acard-header"><div><h3>Quick Edit</h3><div class="adesc">Jump to any section and make changes</div></div></div>
+          <button class="quick-link-btn" onclick="switchAdminKey('ident')"><span><span class="ql-icon">🖼️</span> &nbsp;Logo & Clinic Name</span><span class="ql-arr">→</span></button>
+          <button class="quick-link-btn" onclick="switchAdminKey('ahero')"><span><span class="ql-icon">🌟</span> &nbsp;Hero Headline & Photo</span><span class="ql-arr">→</span></button>
+          <button class="quick-link-btn" onclick="switchAdminKey('asvcs')"><span><span class="ql-icon">🦷</span> &nbsp;Services & Pricing</span><span class="ql-arr">→</span></button>
+          <button class="quick-link-btn" onclick="switchAdminKey('arevs')"><span><span class="ql-icon">⭐</span> &nbsp;Patient Reviews</span><span class="ql-arr">→</span></button>
+          <button class="quick-link-btn" onclick="switchAdminKey('acon')"><span><span class="ql-icon">📍</span> &nbsp;Contact & Opening Hours</span><span class="ql-arr">→</span></button>
+          <button class="quick-link-btn" onclick="switchAdminKey('agal')"><span><span class="ql-icon">📷</span> &nbsp;Upload Clinic Photos</span><span class="ql-arr">→</span></button>
+        </div>
+        <div class="acard">
+          <div class="acard-header"><div><h3>How It Works</h3><div class="adesc">Managing your website in 4 steps</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:4px">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:7px;background:rgba(74,124,111,.1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">1</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px">Pick a section</div><div style="font-size:12px;color:var(--mid)">Click any tab in the bar above to jump directly to that section.</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:7px;background:rgba(74,124,111,.1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">2</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px">Edit anything</div><div style="font-size:12px;color:var(--mid)">Change text, upload photos, update prices, add or remove items.</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:7px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">3</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px">Save & Publish</div><div style="font-size:12px;color:var(--mid)">Click the gold <strong>Save & Publish</strong> button at the top right to go live.</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:7px;background:rgba(74,124,111,.1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">4</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px">View Live Site</div><div style="font-size:12px;color:var(--mid)">Click <strong>↗ View Site</strong> to confirm changes are visible to patients.</div></div>
+            </div>
           </div>
         </div>
-        <div class="acard"><h3>How To Use</h3><p class="adesc">3 steps</p>
-          <ol style="font-size:12px;color:#6b7280;line-height:2.1;padding-left:16px">
-            <li>Click any tab in the top bar</li>
-            <li>Edit content — text, photos, prices</li>
-            <li>Click <strong style="color:#1a202c">💾 Save & Publish</strong></li>
-            <li>Click <strong style="color:#1a202c">↗ View Site</strong> to confirm</li>
-          </ol>
+      </div>
+
+      <div class="acard">
+        <div class="acard-header"><div><h3>Clinic At a Glance</h3><div class="adesc">Current details as they appear on the live website</div></div></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div style="padding:14px;background:var(--ivory);border:1px solid rgba(74,124,111,.1);border-radius:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Doctor</div>
+            <div style="font-size:14px;font-weight:600;color:var(--ink)">Dr. Atul Kapoor</div>
+            <div style="font-size:12px;color:var(--mid)">BDS, MDS · Dental Surgeon</div>
+          </div>
+          <div style="padding:14px;background:var(--ivory);border:1px solid rgba(74,124,111,.1);border-radius:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Address</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink)">23 Anand Avenue Road</div>
+            <div style="font-size:12px;color:var(--mid)">Amritsar, Punjab 143001</div>
+          </div>
+          <div style="padding:14px;background:var(--ivory);border:1px solid rgba(74,124,111,.1);border-radius:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Hours</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink)">Mon–Sat: 9am–8pm</div>
+            <div style="font-size:12px;color:var(--mid)">Sunday: Closed</div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- BRANDING -->
     <div class="apanel" id="apanel-ident">
-      <div class="acard"><h3>Clinic Logo</h3><p class="adesc">PNG with transparent background. 200×60px ideal.</p>
-        <div class="iup"><input type="file" id="logo-file" accept="image/*" onchange="uploadImg(this,'logo-prev','logo')"><div class="iico">🖼️</div><p><strong>Click to upload logo</strong></p><p>PNG, SVG or JPG — max 2MB</p><img id="logo-prev" class="iprev"></div>
+      <div class="asec-label">Brand Identity</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Clinic Logo</h3><div class="adesc">Upload your clinic logo. PNG with transparent background gives the cleanest look. Recommended size: 200×60px.</div></div><span class="acard-badge">Optional</span></div>
+        <div class="iup"><input type="file" id="logo-file" accept="image/*" onchange="uploadImg(this,'logo-prev','logo')"><div class="iico">🖼️</div><div class="iup-title">Click to upload logo</div><div class="iup-sub">PNG, SVG or JPG — max 2MB · Transparent background preferred</div><img id="logo-prev" class="iprev"></div>
       </div>
-      <div class="acard"><h3>Clinic Identity</h3>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Clinic Identity</h3><div class="adesc">Core details used in the navbar, footer, page title, and throughout the site.</div></div></div>
         <div class="ag2">
-          <div class="af"><label>Clinic / Doctor Name</label><input type="text" id="a-name" placeholder="Dr. Atul Kapoor"></div>
-          <div class="af"><label>Specialty Tag</label><input type="text" id="a-doc" placeholder="Dental Surgeon · Amritsar"></div>
+          <div class="af"><label>Doctor / Clinic Name</label><input type="text" id="a-name" placeholder="Dr. Atul Kapoor"></div>
+          <div class="af"><label>Specialty & Location Tag</label><input type="text" id="a-doc" placeholder="Dental Surgeon · Amritsar"></div>
         </div>
-        <div class="af"><label>Tagline</label><input type="text" id="a-tagline" placeholder="Expert Dental Surgeon · Amritsar"></div>
-        <div class="af"><label>WhatsApp Number (country code, no spaces)</label><input type="tel" id="a-wa" placeholder="+919814567890"></div>
+        <div class="af"><label>Tagline (shown in hero section)</label><input type="text" id="a-tagline" placeholder="Expert Dental Surgeon · Amritsar"></div>
+        <div class="af"><label>WhatsApp Number <span style="font-weight:400;color:var(--hint)">(with country code, no spaces)</span></label><input type="tel" id="a-wa" placeholder="+919814567890"><div class="ahint">Used for all WhatsApp buttons, appointment booking, and direct links across the site.</div></div>
       </div>
-      <div class="acard"><h3>Hero Photo</h3><p class="adesc">Professional clinic/doctor photo. 800×1000px recommended.</p>
-        <div class="iup"><input type="file" id="hero-photo-file" accept="image/*" onchange="uploadImg(this,'hero-photo-prev','heroPhoto')"><div class="iico">📷</div><p><strong>Click to upload</strong></p><p>JPG or PNG — max 4MB</p><img id="hero-photo-prev" class="iprev"></div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Hero Clinic Photo</h3><div class="adesc">The main photo shown in the hero section — largest visual on the site. Use a professional photo of the clinic, reception, or Dr. Kapoor.</div></div><span class="acard-badge">Recommended</span></div>
+        <div class="iup"><input type="file" id="hero-photo-file" accept="image/*" onchange="uploadImg(this,'hero-photo-prev','heroPhoto')"><div class="iico">📷</div><div class="iup-title">Click to upload hero photo</div><div class="iup-sub">JPG or PNG — max 4MB · Best size: 800×1000px (portrait)</div><img id="hero-photo-prev" class="iprev"></div>
       </div>
     </div>
+
+    <!-- HERO -->
     <div class="apanel" id="apanel-ahero">
-      <div class="acard"><h3>Subtitle Text</h3>
-        <div class="af"><label>Subtitle</label><textarea id="a-sub"></textarea></div>
+      <div class="asec-label">Hero Section</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Subtitle Text</h3><div class="adesc">The paragraph shown below the headline. Keep it under 2 lines — concise and confidence-inspiring.</div></div></div>
+        <div class="af"><textarea id="a-sub" style="min-height:80px"></textarea></div>
       </div>
-      <div class="acard"><h3>Stats Bar</h3>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Stats Bar</h3><div class="adesc">Three numbers shown below the headline. Update these as your clinic grows — they build trust instantly.</div></div></div>
         <div class="ag3">
-          <div><div class="af"><label>Stat 1 Number</label><input type="text" id="a-s1n" placeholder="4800+"></div><div class="af"><label>Stat 1 Label</label><input type="text" id="a-s1l" placeholder="Happy Patients"></div></div>
-          <div><div class="af"><label>Stat 2 Number</label><input type="text" id="a-s2n" placeholder="15+"></div><div class="af"><label>Stat 2 Label</label><input type="text" id="a-s2l" placeholder="Years Experience"></div></div>
-          <div><div class="af"><label>Stat 3 Number</label><input type="text" id="a-s3n" placeholder="4.9★"></div><div class="af"><label>Stat 3 Label</label><input type="text" id="a-s3l" placeholder="Google Rating"></div></div>
+          <div><div class="af"><label>Stat 1 — Number</label><input type="text" id="a-s1n" placeholder="4800+"></div><div class="af"><label>Stat 1 — Label</label><input type="text" id="a-s1l" placeholder="Happy Patients"></div></div>
+          <div><div class="af"><label>Stat 2 — Number</label><input type="text" id="a-s2n" placeholder="15+"></div><div class="af"><label>Stat 2 — Label</label><input type="text" id="a-s2l" placeholder="Years Experience"></div></div>
+          <div><div class="af"><label>Stat 3 — Number</label><input type="text" id="a-s3n" placeholder="4.9★"></div><div class="af"><label>Stat 3 — Label</label><input type="text" id="a-s3l" placeholder="Google Rating"></div></div>
         </div>
       </div>
     </div>
+
+    <!-- SERVICES -->
     <div class="apanel" id="apanel-asvcs">
-      <div class="acard"><h3>Services</h3><p class="adesc">Each service has a price and process description shown in the popup modal.</p>
-        <div class="n-info">💡 The detailed step-by-step process is built-in for all 8 services. You can edit titles and prices here.</div>
+      <div class="asec-label">Services & Pricing</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Treatment Cards</h3><div class="adesc">Edit the price and description for each service. When a patient clicks a service, a full step-by-step process popup appears automatically.</div></div></div>
+        <div class="n-info">💡 &nbsp;The detailed 6–7 step process for each treatment is built-in and always shown. You can update prices and short descriptions here.</div>
         <div id="a-svcs-ed"></div>
-        <button class="add-btn" onclick="addService()">+ Add Service</button>
+        <button class="add-btn" onclick="addService()">+ Add Custom Service</button>
       </div>
     </div>
+
+    <!-- ABOUT -->
     <div class="apanel" id="apanel-awhy">
-      <div class="acard"><h3>About Heading</h3>
-        <div class="af"><label>Section Tag</label><input type="text" id="a-atag" placeholder="Why Choose Us"></div>
-        <div class="af"><label>Heading</label><input type="text" id="a-ah" placeholder="Expert Surgical Care With a Gentle Touch"></div>
+      <div class="asec-label">About & Why Choose Us</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Section Heading</h3><div class="adesc">The title of the "Why Choose Us" section. Keep it short and compelling.</div></div></div>
+        <div class="af"><label>Section Tag <span style="font-weight:400;color:var(--hint)">(small text above heading)</span></label><input type="text" id="a-atag" placeholder="Why Choose Us"></div>
+        <div class="af"><label>Main Heading</label><input type="text" id="a-ah" placeholder="Expert Surgical Care With a Gentle Touch"></div>
       </div>
-      <div class="acard"><h3>Why Choose Us — Points</h3>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Trust Points</h3><div class="adesc">Four reasons patients choose Dr. Kapoor over other dentists. Be specific — vague points don't convert.</div></div></div>
         <div id="a-why-ed"></div>
         <button class="add-btn" onclick="addWhy()">+ Add Point</button>
       </div>
     </div>
+
+    <!-- REVIEWS -->
     <div class="apanel" id="apanel-arevs">
-      <div class="acard"><h3>Patient Reviews</h3><p class="adesc">Reviews scroll automatically in a belt. Add as many as you like — the more the better.</p>
+      <div class="asec-label">Patient Reviews</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Testimonials Belt</h3><div class="adesc">Reviews scroll continuously from right to left — the more reviews you add, the more impressive it looks. Always use real patient names.</div></div><span class="acard-badge" id="a-revcount-badge">7 reviews</span></div>
+        <div class="n-info">⭐ &nbsp;Aim for 8–12 reviews minimum. Reviews are the single most powerful trust signal for new patients visiting your site.</div>
         <div id="a-revs-ed"></div>
-        <button class="add-btn" onclick="addReview()">+ Add Review</button>
+        <button class="add-btn" onclick="addReview()">+ Add Patient Review</button>
       </div>
     </div>
+
+    <!-- GALLERY -->
     <div class="apanel" id="apanel-agal">
-      <div class="acard"><h3>Clinic Gallery</h3><p class="adesc">Photos of clinic, equipment, team. Adds a gallery section to the site.</p>
+      <div class="asec-label">Clinic Gallery</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Photo Gallery</h3><div class="adesc">Photos of your clinic interior, equipment, reception area, and team. A gallery section appears automatically on the website once you upload at least one photo.</div></div></div>
+        <div class="n-info">📸 &nbsp;Good photos to include: clinic reception, treatment chair, sterilization equipment, team photo, before/after (with patient consent). Quality matters more than quantity.</div>
         <label class="iup" style="display:block;cursor:pointer">
           <input type="file" accept="image/*" multiple onchange="uploadGallery(this)" style="position:static;opacity:1;width:auto;height:auto;display:none">
-          <div class="iico">📁</div><p><strong>Click to upload photos</strong></p><p>Select multiple at once — JPG/PNG max 4MB</p>
+          <div class="iico">📁</div><div class="iup-title">Click to upload clinic photos</div><div class="iup-sub">Select multiple at once · JPG or PNG · max 4MB each</div>
         </label>
-        <div id="a-gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px"></div>
+        <div id="a-gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px"></div>
       </div>
     </div>
+
+    <!-- CONTACT -->
     <div class="apanel" id="apanel-acon">
-      <div class="acard"><h3>Contact Details</h3>
+      <div class="asec-label">Contact Information</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Contact Details</h3><div class="adesc">Shown in the contact section and used for all phone links, WhatsApp buttons, and address across the entire site.</div></div></div>
         <div class="ag2">
-          <div class="af"><label>Phone</label><input type="tel" id="a-phone" placeholder="+91 98145 67890"></div>
-          <div class="af"><label>Email</label><input type="email" id="a-email" placeholder="drkapoor@clinic.in"></div>
+          <div class="af"><label>Phone Number</label><input type="tel" id="a-phone" placeholder="+91 98145 67890"></div>
+          <div class="af"><label>Email Address</label><input type="email" id="a-email" placeholder="drkapoor@clinic.in"></div>
         </div>
-        <div class="af"><label>Full Address</label><textarea id="a-addr" style="min-height:50px"></textarea></div>
-        <div class="af"><label>Google Maps Embed URL</label><input type="url" id="a-maps" placeholder="https://www.google.com/maps/embed?..."><div class="ahint">Google Maps → Share → Embed a map → copy src URL only</div></div>
+        <div class="af"><label>Full Clinic Address</label><textarea id="a-addr" style="min-height:50px"></textarea></div>
+        <div class="af"><label>Google Maps Embed URL</label><input type="url" id="a-maps" placeholder="https://www.google.com/maps/embed?..."><div class="ahint">Google Maps → Search your clinic → Share → Embed a map → Copy the src URL only (starts with https://www.google.com/maps/embed)</div></div>
       </div>
-      <div class="acard"><h3>Opening Hours</h3><div id="a-hours-ed"></div></div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Opening Hours</h3><div class="adesc">Set your weekly schedule. Closed days are automatically marked in the contact section.</div></div></div>
+        <div id="a-hours-ed"></div>
+      </div>
     </div>
+
+    <!-- SEO -->
     <div class="apanel" id="apanel-aseo">
-      <div class="acard"><h3>SEO Meta Tags</h3>
-        <div class="af"><label>Page Title (under 60 chars)</label><input type="text" id="a-stitle"><div class="ahint" id="a-stc">0 / 60</div></div>
-        <div class="af"><label>Meta Description (under 155 chars)</label><textarea id="a-sdesc" style="min-height:55px"></textarea><div class="ahint" id="a-sdc">0 / 155</div></div>
-        <div class="af"><label>Keywords</label><input type="text" id="a-skw"></div>
+      <div class="asec-label">Search Engine Optimisation</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Google Meta Tags</h3><div class="adesc">These control how your website appears in Google search results and when shared on WhatsApp or social media. Well-written meta tags directly increase the number of new patients finding you.</div></div></div>
+        <div class="n-info">📈 &nbsp;<strong>Page Title tip:</strong> Include your doctor's name + "Amritsar" + "dental surgeon" for best local Google ranking. Keep under 60 characters.</div>
+        <div class="af"><label>Page Title <span style="font-weight:400;color:var(--hint)">(shown in Google results & browser tab)</span></label><input type="text" id="a-stitle" placeholder="Dr. Atul Kapoor | Dental Surgeon Amritsar"><div class="ahint" id="a-stc">0 / 60 characters</div></div>
+        <div class="af"><label>Meta Description <span style="font-weight:400;color:var(--hint)">(shown below title in Google results)</span></label><textarea id="a-sdesc" style="min-height:70px" placeholder="Expert dental surgeon in Amritsar. Painless RCT, implants, whitening, braces. 23 Anand Avenue Road. Book now."></textarea><div class="ahint" id="a-sdc">0 / 155 characters</div></div>
+        <div class="af"><label>Keywords <span style="font-weight:400;color:var(--hint)">(comma separated)</span></label><input type="text" id="a-skw" placeholder="dental surgeon amritsar, Dr Atul Kapoor, teeth whitening amritsar"></div>
       </div>
     </div>
+
+    <!-- THEME -->
     <div class="apanel" id="apanel-atheme">
-      <div class="acard"><h3>Colors</h3>
-        <div class="crow"><label>Primary Green</label><input type="color" id="c-pri" value="#4a7c6f" oninput="document.getElementById('h-pri').textContent=this.value"><span class="chex" id="h-pri">#4a7c6f</span></div>
-        <div class="crow"><label>Accent Gold</label><input type="color" id="c-acc" value="#c9a84c" oninput="document.getElementById('h-acc').textContent=this.value"><span class="chex" id="h-acc">#c9a84c</span></div>
-        <div class="crow"><label>Ink / Text</label><input type="color" id="c-ink" value="#1a1a1a" oninput="document.getElementById('h-ink').textContent=this.value"><span class="chex" id="h-ink">#1a1a1a</span></div>
-        <div class="crow"><label>Background</label><input type="color" id="c-bg" value="#faf8f4" oninput="document.getElementById('h-bg').textContent=this.value"><span class="chex" id="h-bg">#faf8f4</span></div>
+      <div class="asec-label">Visual Theme</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Color Palette</h3><div class="adesc">Change your site's colors. All changes apply site-wide instantly after Save & Publish. The current sage green and gold palette is recommended for a professional dental brand.</div></div></div>
+        <div class="crow"><label>Primary — Sage Green <span style="color:var(--hint);font-weight:400">(nav, buttons, accents)</span></label><input type="color" id="c-pri" value="#4a7c6f" oninput="document.getElementById('h-pri').textContent=this.value"><span class="chex" id="h-pri">#4a7c6f</span></div>
+        <div class="crow"><label>Accent — Gold <span style="color:var(--hint);font-weight:400">(price tags, highlights)</span></label><input type="color" id="c-acc" value="#c9a84c" oninput="document.getElementById('h-acc').textContent=this.value"><span class="chex" id="h-acc">#c9a84c</span></div>
+        <div class="crow"><label>Ink — Text Color <span style="color:var(--hint);font-weight:400">(headings, body text)</span></label><input type="color" id="c-ink" value="#1a1a1a" oninput="document.getElementById('h-ink').textContent=this.value"><span class="chex" id="h-ink">#1a1a1a</span></div>
+        <div class="crow"><label>Background — Ivory <span style="color:var(--hint);font-weight:400">(page background)</span></label><input type="color" id="c-bg" value="#faf8f4" oninput="document.getElementById('h-bg').textContent=this.value"><span class="chex" id="h-bg">#faf8f4</span></div>
+        <div class="n-info" style="margin-top:14px">🎨 &nbsp;After changing colors, click <strong>Save & Publish</strong> then refresh the live site to see the update.</div>
       </div>
     </div>
+
+    <!-- SETTINGS -->
     <div class="apanel" id="apanel-aset">
-      <div class="acard"><h3>Change Admin Credentials</h3>
+      <div class="asec-label">Settings & Security</div>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Admin Credentials</h3><div class="adesc">Change the username and password used to access this admin panel. Choose a strong password — this protects your entire website.</div></div></div>
         <div class="ag2">
-          <div class="af"><label>Username</label><input type="text" id="s-user" placeholder="admin"></div>
-          <div class="af"><label>New Password</label><input type="password" id="s-pass" placeholder="New password"></div>
+          <div class="af"><label>Username</label><input type="text" id="s-user" placeholder="admin" autocomplete="new-password"></div>
+          <div class="af"><label>New Password</label><input type="password" id="s-pass" placeholder="Enter new password" autocomplete="new-password"></div>
         </div>
-        <button onclick="saveCreds()" style="padding:8px 16px;background:#4a7c6f;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Update Credentials</button>
+        <button onclick="saveCreds()" style="padding:10px 18px;background:linear-gradient(135deg,var(--sage),var(--sage-d));color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.02em">Update Credentials →</button>
       </div>
-      <div class="acard"><h3>Data Management</h3>
-        <div style="display:flex;gap:7px;flex-wrap:wrap">
-          <button onclick="exportData()" style="padding:7px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit">📥 Export Backup</button>
-          <button onclick="document.getElementById('import-file').click()" style="padding:7px 12px;background:#f9fafb;border:1px solid #e2e4e8;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit">📤 Import Backup</button>
-          <button onclick="resetData()" style="padding:7px 12px;background:#fee2e2;border:1px solid #fca5a5;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;color:#e53e3e">🗑 Reset</button>
+      <div class="acard">
+        <div class="acard-header"><div><h3>Data Management</h3><div class="adesc">Export a JSON backup of all your CMS data before making major changes. Import a backup to restore. Reset returns everything to the original defaults.</div></div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="exportData()" class="data-btn">📥 Export JSON Backup</button>
+          <button onclick="document.getElementById('import-file').click()" class="data-btn">📤 Import Backup</button>
+          <button onclick="resetData()" class="data-btn danger">🗑 Reset to Defaults</button>
         </div>
         <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(this)">
+        <div class="n-warn" style="margin-top:14px">⚠ &nbsp;Reset to Defaults will erase all your edits permanently. Export a backup first.</div>
       </div>
     </div>
-  </div>
-</div>
-</div><!-- end admin-panel -->
 
-<div id="admin-toast"></div>
+  </div><!-- end acontent -->
+</div><!-- end admin-ui -->
+</div><!-- end admin-panel -->
 
 <!-- ════════════════════ JAVASCRIPT ════════════════════ -->
 <script>
@@ -858,6 +1057,7 @@ function renderSite(){
   setText('s-cname',name); setText('s-ctag',D.ident?.doc||DEF.ident.doc);
   const ph=(D.contact?.phone||DEF.contact.phone).replace(/\s/g,'');
   const phoneEl=document.getElementById('s-phone'); if(phoneEl)phoneEl.href='tel:'+ph;
+  const mmPhone=document.getElementById('mm-phone'); if(mmPhone)mmPhone.href='tel:'+ph;
   setText('s-phone-display',D.contact?.phone||DEF.contact.phone);
   if(D.imgs?.logo){const li=document.getElementById('s-logo-img');if(li){li.src=D.imgs.logo;li.style.display='block';const fb=document.querySelector('.nfb');if(fb)fb.style.display='none';}}
   [document.getElementById('swa'),document.getElementById('s-wa-hero'),document.getElementById('s-wa-contact'),document.getElementById('s-fwa')].forEach(el=>{if(el)el.href=waUrl;});
@@ -968,22 +1168,40 @@ function submitForm(){
   setTimeout(()=>window.open(`https://wa.me/${wa}?text=${msg}`,'_blank'),600);
 }
 
-function toggleMenu(){
-  const links=document.querySelector('.nlinks');
-  if(!links)return;
-  const visible=links.style.display==='flex';
-  if(visible){links.style.display='none';}
-  else{links.style.cssText='display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(250,248,244,.97);padding:16px 5%;z-index:150;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,.08)';}
+function openMenu(){
+  document.getElementById('mobile-menu').classList.add('open');
+  document.getElementById('mm-overlay').classList.add('open');
+  document.querySelector('.hamburger').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('mm-overlay').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('open');
+  document.body.style.overflow='';
 }
 window.addEventListener('scroll',()=>{document.getElementById('main-nav')?.classList.toggle('scrolled',window.scrollY>40);});
 
 // ── ADMIN ─────────────────────────────────────────────────────
-function showAdmin(){document.getElementById('website').style.display='none';document.getElementById('admin-panel').style.display='block';document.body.style.overflow='auto';}
-function hideAdmin(){document.getElementById('admin-panel').style.display='none';document.getElementById('website').style.display='block';document.body.style.overflow='auto';renderSite();}
+function showAdmin(){
+  const ap = document.getElementById('admin-panel');
+  ap.style.cssText = 'display:block;position:fixed;inset:0;z-index:400;overflow-y:auto;background:var(--ivory)';
+  document.body.style.overflow = 'hidden';
+}
+function hideAdmin(){
+  document.getElementById('admin-panel').style.display = 'none';
+  document.body.style.overflow = '';
+  renderSite();
+}
 function doLogin(){
   const u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value;
   const c=D.creds||DEF.creds;
-  if(u===c.user&&p===c.pass){document.getElementById('login-screen').style.display='none';document.getElementById('admin-ui').style.display='flex';document.getElementById('admin-ui').style.flexDirection='column';populateAdmin();}
+  if(u===c.user&&p===c.pass){
+    document.getElementById('login-screen').style.display='none';
+    const ui=document.getElementById('admin-ui');
+    ui.style.display='flex'; ui.style.flexDirection='column';
+    populateAdmin();
+  }
   else{document.getElementById('lerr').style.display='block';}
 }
 function doLogout(){if(confirm('Sign out?')){document.getElementById('admin-ui').style.display='none';document.getElementById('login-screen').style.display='flex';hideAdmin();}}
@@ -1074,6 +1292,8 @@ function saveAll(){
     const ts=new Date().toLocaleString('en-IN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'short'});
     localStorage.setItem('dkdc_v4_saved',ts);
     setText('a-lastsaved','Saved '+ts);
+    const badge=document.getElementById('a-revcount-badge');
+    if(badge)badge.textContent=(D.revs||DEF_REVIEWS).length+' reviews';
     setText('a-sname',D.ident.name||'Dr. Atul Kapoor');
     applyTheme();
     showToast('✓ Saved & Published!','ok');
